@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes gradient-dreamy {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, #fbcfe8, #ffedd5, #fef9c3);
+  background-size: 300% 300%;
+  z-index: 0;
+
+  /* animasi */
+  -webkit-animation: gradient-dreamy 8s ease infinite;
+  animation: gradient-dreamy 8s ease infinite;
+
+  /* paksa aktif di mobile */
+  will-change: background-position;
+}
+
+.gradient-bg img {
+  position: relative;
+  z-index: 1;
+}
