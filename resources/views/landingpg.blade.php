@@ -6,12 +6,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GEMAS - Generasi Masa MPASI Sehat</title>
-     @include('google-analytics')  <!-- Panggil file GA di sini -->
+    @include('google-analytics') <!-- Panggil file GA di sini -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-          <style>
+    <style>
         [x-cloak] {
             display: none !important;
         }
@@ -280,64 +280,71 @@
         class="relative bg-gradient-to-br from-yellow-50 via-yellow-100 to-yellow-50 animate-gradient-dreamy overflow-hidden">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-8 py-12 relative z-10">
             <!-- Text content -->
-            
+
             <div>
-                 <div class="inline-block">
-                        <span class="bg-yellow-200 text-yellow-900 text-xs font-semibold px-4 py-2 rounded-full shadow-sm">
-                            ✨ Nutrisi Terbaik untuk Si Kecil
-                        </span>
-                    </div>
-                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
-                        Rekomendasi
-                        <span class="bg-gradient-to-r  from-yellow-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                            MPASI
-                        </span>
-                        Berdasarkan Kalori Bayi
-                    </h1>
-               <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
-                        Dapatkan rekomendasi MPASI yang sehat, bergizi, dan disesuaikan dengan kebutuhan kalori harian bayi Anda secara personal.
-                    </p>
-  <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                @auth
-                            <button @click="$store.bayiData.goToRekomendasi()"
-                                onclick="window.mobileGoToRekomendasi && window.mobileGoToRekomendasi()"
-                                class="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                                <span class="flex items-center gap-2">
-                                    Mulai Sekarang
-                                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                                    </svg>
-                                </span>
-                            </button>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+                <div class="inline-block">
+                    <span class="bg-yellow-200 text-yellow-900 text-xs font-semibold px-4 py-2 rounded-full shadow-sm">
+                        ✨ Nutrisi Terbaik untuk Si Kecil
+                    </span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+                    Rekomendasi
+                    <span
+                        class="bg-gradient-to-r  from-yellow-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                        MPASI
+                    </span>
+                    Berdasarkan Kalori Bayi
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    Dapatkan rekomendasi MPASI yang sehat, bergizi, dan disesuaikan dengan kebutuhan kalori harian bayi
+                    Anda secara personal.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    @auth
+                        <button @click="$store.bayiData.goToRekomendasi()"
+                            onclick="window.mobileGoToRekomendasi && window.mobileGoToRekomendasi()"
+                            class="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                            <span class="flex items-center gap-2">
                                 Mulai Sekarang
-                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </a>
-                        @endauth
-                        </div>
+                            </span>
+                        </button>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="group bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+                            Mulai Sekarang
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
+                    @endauth
+                </div>
             </div>
 
             <!-- Illustration -->
             <div class="relative flex justify-center items-center">
                 <!-- Lingkaran dreamy -->
                 <div class="relative">
-                        <img src="{{ asset('bahan/log.png') }}" 
-                             class="relative w-80 lg:w-[450px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-500" 
-                             alt="MPASI Illustration" />
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-4 -right-4 bg-white p-3 rounded-2xl shadow-lg animate-bounce">
-                            <span class="text-2xl">🥕</span>
-                        </div>
-                        <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-lg animate-bounce delay-300">
-                            <span class="text-2xl">🍎</span>
-                        </div>
+                    <img src="{{ asset('bahan/log.png') }}"
+                        class="relative w-80 lg:w-[450px] drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                        alt="MPASI Illustration" />
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 bg-white p-3 rounded-2xl shadow-lg animate-bounce">
+                        <span class="text-2xl">🥕</span>
+                    </div>
+                    <div
+                        class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-lg animate-bounce delay-300">
+                        <span class="text-2xl">🍎</span>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -359,7 +366,7 @@
 
     <!-- Fitur Section -->
     <section class="bg-gradient-to-t from-yellow-50 via-yellow-100 to-yellow-50 px-8 py-12">
-            <div class="text-center mb-16">
+        <div class="text-center mb-16">
             <h2 class="text-3xl md:text-3xl font-black text-gray-900 mb-4">
                 Kenapa Memilih <span class="text-orange-500">GEMAS</span>?
             </h2>
@@ -368,30 +375,34 @@
             </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-            
-             <!-- Feature 1 -->
+
+            <!-- Feature 1 -->
             <div class="text-center group">
-             
+
                 @auth
                     <button @click="$store.bayiData.goToRekomendasi()"
-                        onclick="window.mobileGoToRekomendasi && window.mobileGoToRekomendasi()"
-                        class="w-full">
-                        
-                         <!-- Large Floating Icon -->
+                        onclick="window.mobileGoToRekomendasi && window.mobileGoToRekomendasi()" class="w-full">
+
+                        <!-- Large Floating Icon -->
                         <div class="relative inline-block mb-8">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                        <div class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
-                                <img src="{{ asset('bahan/kalkulator.png') }}" alt="Kalkulator" class="w-24 h-24 mx-auto" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity">
                             </div>
-                            
+                            <div
+                                class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
+                                <img src="{{ asset('bahan/kalkulator.png') }}" alt="Kalkulator"
+                                    class="w-24 h-24 mx-auto" />
+                            </div>
+
                             <!-- Badge -->
-                           <div class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            <div
+                                class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                                 GRATIS
                             </div>
                         </div>
 
                         <!-- Content -->
-                         <h3 class="text-2xl font-black text-gray-900 mb-4 group-hover:text-yellow-600 transition-colors">
+                        <h3 class="text-2xl font-black text-gray-900 mb-4 group-hover:text-yellow-600 transition-colors">
                             Rekomendasi MPASI
                         </h3>
                         <p class="text-gray-600 text-lg leading-relaxed mb-6">
@@ -402,13 +413,18 @@
                     <a href="{{ route('login') }}" class="block">
                         <!-- Large Floating Icon -->
                         <div class="relative inline-block mb-8">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                        <div class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
-                                <img src="{{ asset('bahan/kalkulator.png') }}" alt="Kalkulator" class="w-24 h-24 mx-auto" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity">
                             </div>
-                            
+                            <div
+                                class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
+                                <img src="{{ asset('bahan/kalkulator.png') }}" alt="Kalkulator"
+                                    class="w-24 h-24 mx-auto" />
+                            </div>
+
                             <!-- Badge -->
-                           <div class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            <div
+                                class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                                 GRATIS
                             </div>
                         </div>
@@ -429,13 +445,17 @@
                 <a href="{{ route('artikel') }}" class="block">
                     <!-- Large Floating Icon -->
                     <div class="relative inline-block mb-8">
-                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                        <div class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-yellow-400 to-yellow-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity">
+                        </div>
+                        <div
+                            class="relative bg-gradient-to-br from-yellow-50 to-yellow-50 rounded-full p-12 group-hover:scale-110 transition-transform duration-500">
                             <img src="{{ asset('bahan/arikel.png') }}" alt="Artikel" class="w-24 h-24 mx-auto" />
                         </div>
-                        
+
                         <!-- Badge -->
-                        <div class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        <div
+                            class="absolute -top-2 -right-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                             100+ Artikel
                         </div>
                     </div>
@@ -456,7 +476,7 @@
     <!-- gallery mpasi section -->
     <section class="w-full bg-yellow-50 py-10">
         <div class="container mx-auto px-4">
-           <div class="text-center mb-12">
+            <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Galeri Menu MPASI</h2>
                 <p class="text-xl text-gray-600">Inspirasi menu lezat dan bergizi untuk si kecil</p>
             </div>
@@ -488,11 +508,12 @@
 
     <!-- Artikel section -->
     <section class="w-full bg-yellow-50 py-10">
-          <div class="container mx-auto">
+        <div class="container mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Artikel Terkini</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Temukan berbagai artikel menarik dan informatif seputar Makanan Pendamping ASI untuk mendukung pertumbuhan si kecil
+                    Temukan berbagai artikel menarik dan informatif seputar Makanan Pendamping ASI untuk mendukung
+                    pertumbuhan si kecil
                 </p>
             </div>
 
@@ -501,35 +522,45 @@
                     <!-- Featured Article -->
                     <a href="{{ route('artikel.show', $artikels[0]->slug) }}"
                         class="group relative h-[500px] overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500">
-                        
+
                         @if ($artikels[0]->gambar_url)
-                            <img src="{{ $artikels[0]->gambar_url }}" 
-                                 alt="{{ $artikels[0]->judul }}"
-                                 onerror="this.onerror=null;this.remove();"
-                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                        @else
-                            <div class="absolute inset-0 bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-400">
-                                <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+                            <img src="{{ $artikels[0]->gambar_url }}" alt="{{ $artikels[0]->judul }}"
+                                onerror="this.onerror=null;this.remove();"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent">
                             </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                        @else
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-400">
+                                <div class="absolute inset-0 opacity-20"
+                                    style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent">
+                            </div>
                         @endif
 
                         <div class="absolute inset-x-0 bottom-0 p-8">
-                            <span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                            <span
+                                class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full mb-4">
                                 Terbaru
                             </span>
-                            <h3 class="text-3xl font-bold text-white mb-3 drop-shadow-lg group-hover:text-yellow-300 transition-colors">
+                            <h3
+                                class="text-3xl font-bold text-white mb-3 drop-shadow-lg group-hover:text-yellow-300 transition-colors">
                                 {{ $artikels[0]->judul }}
                             </h3>
                             <div class="flex items-center gap-3 text-white/90">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd"
+                                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                        clip-rule="evenodd" />
                                 </svg>
                                 <span class="font-semibold">Baca Selengkapnya</span>
-                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
                             </div>
                         </div>
@@ -542,28 +573,37 @@
                         @if ($artikel)
                             <a href="{{ route('artikel.show', $artikel->slug) }}"
                                 class="group relative block h-56 overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                                
+
                                 @if ($artikel->gambar_url)
-                                    <img src="{{ $artikel->gambar_url }}" 
-                                         alt="{{ $artikel->judul }}"
-                                         onerror="this.onerror=null;this.remove();"
-                                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-                                @else
-                                    <div class="absolute inset-0 bg-gradient-to-br from-pink-400 via-rose-500 to-orange-400">
-                                        <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+                                    <img src="{{ $artikel->gambar_url }}" alt="{{ $artikel->judul }}"
+                                        onerror="this.onerror=null;this.remove();"
+                                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent">
                                     </div>
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                                @else
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-pink-400 via-rose-500 to-orange-400">
+                                        <div class="absolute inset-0 opacity-20"
+                                            style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent">
+                                    </div>
                                 @endif
 
                                 <div class="absolute inset-x-0 bottom-0 p-6">
-                                    <h3 class="text-xl font-bold text-white mb-2 drop-shadow-lg group-hover:text-yellow-300 transition-colors">
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2 drop-shadow-lg group-hover:text-yellow-300 transition-colors">
                                         {{ $artikel->judul }}
                                     </h3>
                                     <div class="flex items-center gap-2 text-white/90 text-sm">
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd"
+                                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                         <span>Baca Artikel</span>
                                     </div>
@@ -574,12 +614,13 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
     <!-- pertanyaan umum section -->
-     <section class="bg-gradient-to-b from-amber-50 to-yellow-50 py-20 px-6">
+    <section class="bg-gradient-to-b from-amber-50 to-yellow-50 py-20 px-6">
         <div class="container mx-auto max-w-3xl">
             <div class="text-center mb-12">
-                <span class="inline-block bg-yellow-200 text-yellow-900 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                <span
+                    class="inline-block bg-yellow-200 text-yellow-900 text-sm font-semibold px-4 py-2 rounded-full mb-4">
                     ❓ FAQ
                 </span>
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Pertanyaan yang Sering Diajukan</h2>
@@ -589,25 +630,27 @@
             <div class="space-y-4" x-data="{ open1: false, open2: false }">
                 <!-- FAQ 1 -->
                 <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-                    <button @click="open1 = !open1" 
-                            class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <button @click="open1 = !open1"
+                        class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
                         <span class="text-lg font-bold text-gray-900 pr-4">Apa itu MPASI?</span>
                         <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <svg :class="open1 ? 'rotate-180' : ''" 
-                                 class="w-5 h-5 text-yellow-600 transition-transform duration-300" 
-                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            <svg :class="open1 ? 'rotate-180' : ''"
+                                class="w-5 h-5 text-yellow-600 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open1" 
-                         x-transition:enter="transition ease-out duration-300"
-                         x-transition:enter-start="opacity-0 transform -translate-y-2"
-                         x-transition:enter-end="opacity-100 transform translate-y-0"
-                         class="px-6 pb-6">
+                    <div x-show="open1" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform -translate-y-2"
+                        x-transition:enter-end="opacity-100 transform translate-y-0" class="px-6 pb-6">
                         <div class="pt-4 border-t border-gray-100">
                             <p class="text-gray-700 leading-relaxed">
-                                MPASI merupakan singkatan dari Makanan Pendamping Air Susu Ibu. Ini adalah makanan padat atau makanan cair yang diberikan pada periode penyapihan disaat ASI saja sudah tidak dapat mencukupi kebutuhan nutrisi untuk tumbuh kembang, yang diberikan mulai bayi berumur 6 bulan.
+                                MPASI merupakan singkatan dari Makanan Pendamping Air Susu Ibu. Ini adalah makanan padat
+                                atau makanan cair yang diberikan pada periode penyapihan disaat ASI saja sudah tidak
+                                dapat mencukupi kebutuhan nutrisi untuk tumbuh kembang, yang diberikan mulai bayi
+                                berumur 6 bulan.
                             </p>
                         </div>
                     </div>
@@ -615,25 +658,27 @@
 
                 <!-- FAQ 2 -->
                 <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-                    <button @click="open2 = !open2" 
-                            class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
-                        <span class="text-lg font-bold text-gray-900 pr-4">Bagaimana sistem rekomendasi di GEMAS bekerja?</span>
+                    <button @click="open2 = !open2"
+                        class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                        <span class="text-lg font-bold text-gray-900 pr-4">Bagaimana sistem rekomendasi di GEMAS
+                            bekerja?</span>
                         <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <svg :class="open2 ? 'rotate-180' : ''" 
-                                 class="w-5 h-5 text-yellow-600 transition-transform duration-300" 
-                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            <svg :class="open2 ? 'rotate-180' : ''"
+                                class="w-5 h-5 text-yellow-600 transition-transform duration-300" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
                             </svg>
                         </div>
                     </button>
-                    <div x-show="open2" 
-                         x-transition:enter="transition ease-out duration-300"
-                         x-transition:enter-start="opacity-0 transform -translate-y-2"
-                         x-transition:enter-end="opacity-100 transform translate-y-0"
-                         class="px-6 pb-6">
+                    <div x-show="open2" x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform -translate-y-2"
+                        x-transition:enter-end="opacity-100 transform translate-y-0" class="px-6 pb-6">
                         <div class="pt-4 border-t border-gray-100">
                             <p class="text-gray-700 leading-relaxed">
-                                Sistem kami menghitung kebutuhan kalori harian bayi berdasarkan berat badan, umur bayi, dan kalori jenis susu yang diberikan. Kemudian kami menghitung MPASI yang cocok untuk bayi tersebut dengan akurasi tinggi dan rekomendasi yang personal.
+                                Sistem kami menghitung kebutuhan kalori harian bayi berdasarkan berat badan, umur bayi,
+                                dan kalori jenis susu yang diberikan. Kemudian kami menghitung MPASI yang cocok untuk
+                                bayi tersebut dengan akurasi tinggi dan rekomendasi yang personal.
                             </p>
                         </div>
     </section>
@@ -806,7 +851,7 @@
                         <!--jumlah porsi per hari-->
                         <div x-show="selectedBayi.jenis_susu === 'Sufor' || selectedBayi.jenis_susu === 'Mix'">
                             <label
-                                class="block text-sm font-medium mb-1 focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm">Jumlah
+                                class="block font-medium mb-1 focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-sm">Jumlah
                                 Porsi Sufor per hari <span class="text-red-500">*</span></label>
                             <input type="number" step="1" min="1" max="8"
                                 x-model="selectedBayi.jumlah_porsi_per_hari"
@@ -856,34 +901,46 @@
             <div>
                 <h3 class="text-xl font-bold text-gray-900 mb-6">Menu</h3>
                 <ul class="text-sm space-y-2">
-                       <li>
-                        <a href="{{ route('landingpg') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    <li>
+                        <a href="{{ route('landingpg') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Beranda</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('rekomendasi') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('rekomendasi') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Rekomendasi MPASI</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('perkembangan.index') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('perkembangan.index') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Perkembangan Bayi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('artikel') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('artikel') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Artikel MPASI</span>
                         </a>
@@ -895,31 +952,23 @@
         <!-- Garis dan Hak Cipta -->
         <div class="mt-8 text-center">
             <div class="mx-auto w-48 border-t-2 border-yellow-400"></div>
-             <p class="text-base text-gray-600">
-                    © 2025 GEMAS All rights reserved.
-                </p>
+            <p class="text-base text-gray-600">
+                © 2025 GEMAS All rights reserved.
+            </p>
         </div>
     </footer>
     <!-- end footer -->
     <!-- Notifikasi Global -->
-  <div 
-    x-data="{ show: false, message: '', type: 'success' }" 
-    x-show="show" 
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 translate-y-2"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 translate-y-2"
-    x-cloak
-    class="fixed top-5 right-5 z-50"
-    @notif.window="
+    <div x-data="{ show: false, message: '', type: 'success' }" x-show="show" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-2" x-cloak class="fixed top-5 right-5 z-50"
+        @notif.window="
         message = $event.detail.message;
         type = $event.detail.type;
         show = true;
         setTimeout(() => show = false, 3000);
-    "
->
+    ">
         <div :class="{
             'bg-green-100 border-green-400 text-green-700': type === 'success',
             'bg-red-100 border-red-400 text-red-700': type === 'error'
@@ -936,7 +985,6 @@
             <span x-text="message" class="font-medium"></span>
         </div>
     </div>
-    
 
     <script>
         document.addEventListener('alpine:init', () => {
@@ -1002,7 +1050,7 @@
 
                 // 🔹 SIMPAN TANPA KELUAR
                 async saveOnly() {
-                     if (!this.validateFormSaveOnly()) return; // kirim true biar validasi ringan
+                    if (!this.validateFormSaveOnly()) return; // kirim true biar validasi ringan
                     this.isSubmitting = true;
                     try {
                         let formData = new FormData();
@@ -1149,55 +1197,58 @@
                         this.isSubmitting = false;
                     }
                 },
-// Utility: sanitasi pesan biar gak ada HTML
-sanitizeText(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerText || div.textContent || '';
-},
-                  // 🔹 VALIDASI untuk simpan saja
-validateFormSaveOnly() {
-    const b = this.selectedBayi;
+                // Utility: sanitasi pesan biar gak ada HTML
+                sanitizeText(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerText || div.textContent || '';
+                },
+                // 🔹 VALIDASI untuk simpan saja
+                validateFormSaveOnly() {
+                    const b = this.selectedBayi;
 
-    // --- Wajib diisi ---
-    const required = ['nama_bayi', 'tanggal_lahir', 'jenis_kelamin'];
+                    // --- Wajib diisi ---
+                    const required = ['nama_bayi', 'tanggal_lahir', 'jenis_kelamin'];
 
-    for (let f of required) {
-        if (!b[f]) {
-            window.dispatchEvent(new CustomEvent('notif', {
-                detail: {
-                    message: `Kolom ${f.replace('_', ' ')} wajib diisi!`,
-                    type: 'error'
-                }
-            }));
-            return false;
-        }
-    }
+                    for (let f of required) {
+                        if (!b[f]) {
+                            window.dispatchEvent(new CustomEvent('notif', {
+                                detail: {
+                                    message: `Kolom ${f.replace('_', ' ')} wajib diisi!`,
+                                    type: 'error'
+                                }
+                            }));
+                            return false;
+                        }
+                    }
 
-    // --- Validasi tanggal lahir ---
-    const today = new Date();
-    const birthDate = new Date(b.tanggal_lahir);
-    if (birthDate > today) {
-        window.dispatchEvent(new CustomEvent('notif', {
-            detail: { message: "Tanggal lahir tidak boleh di masa depan!", type: 'error' }
-        }));
-        return false;
-    }
+                    // --- Validasi tanggal lahir ---
+                    const today = new Date();
+                    const birthDate = new Date(b.tanggal_lahir);
+                    if (birthDate > today) {
+                        window.dispatchEvent(new CustomEvent('notif', {
+                            detail: {
+                                message: "Tanggal lahir tidak boleh di masa depan!",
+                                type: 'error'
+                            }
+                        }));
+                        return false;
+                    }
 
-    // --- Validasi nama ---
-    if (b.nama_bayi.length > 100 || !/^[a-zA-Z\s'-]+$/.test(b.nama_bayi)) {
-        window.dispatchEvent(new CustomEvent('notif', {
-            detail: {
-                message: "Nama bayi tidak boleh lebih dari 100 karakter dan hanya boleh mengandung huruf, spasi, tanda petik, dan tanda hubung!",
-                type: 'error'
-            }
-        }));
-        return false;
-    }
+                    // --- Validasi nama ---
+                    if (b.nama_bayi.length > 100 || !/^[a-zA-Z\s'-]+$/.test(b.nama_bayi)) {
+                        window.dispatchEvent(new CustomEvent('notif', {
+                            detail: {
+                                message: "Nama bayi tidak boleh lebih dari 100 karakter dan hanya boleh mengandung huruf, spasi, tanda petik, dan tanda hubung!",
+                                type: 'error'
+                            }
+                        }));
+                        return false;
+                    }
 
 
 
-                 // --- Validasi numerik opsional ---
+                    // --- Validasi numerik opsional ---
                     const numericFields = {
                         berat: {
                             min: 2,
@@ -1241,36 +1292,38 @@ validateFormSaveOnly() {
 
 
 
-    // --- Berdasarkan jenis susu ---
-    if (b.jenis_susu === 'ASI' && b.volume_asi && (b.volume_asi < 200 || b.volume_asi > 1000)) {
-        window.dispatchEvent(new CustomEvent('notif', {
-            detail: {
-                message: 'Volume ASI harus di antara 200–1000 ml.',
-                type: 'error'
-            }
-        }));
-        return false;
-    }
+                    // --- Berdasarkan jenis susu ---
+                    if (b.jenis_susu === 'ASI' && b.volume_asi && (b.volume_asi < 200 || b.volume_asi >
+                            1000)) {
+                        window.dispatchEvent(new CustomEvent('notif', {
+                            detail: {
+                                message: 'Volume ASI harus di antara 200–1000 ml.',
+                                type: 'error'
+                            }
+                        }));
+                        return false;
+                    }
 
-    if (b.jenis_susu === 'Sufor') {
-        if ((b.kalori_per_porsi && (b.kalori_per_porsi < 20 || b.kalori_per_porsi > 120)) ||
-            (b.jumlah_porsi_per_hari && (b.jumlah_porsi_per_hari < 1 || b.jumlah_porsi_per_hari > 8))) {
-            window.dispatchEvent(new CustomEvent('notif', {
-                detail: {
-                    message: 'Kalori per porsi 20–120 kkal dan porsi per hari 1–8 kali.',
-                    type: 'error'
-                }
-            }));
-            return false;
-        }
-    }
+                    if (b.jenis_susu === 'Sufor') {
+                        if ((b.kalori_per_porsi && (b.kalori_per_porsi < 20 || b.kalori_per_porsi > 120)) ||
+                            (b.jumlah_porsi_per_hari && (b.jumlah_porsi_per_hari < 1 || b
+                                .jumlah_porsi_per_hari > 8))) {
+                            window.dispatchEvent(new CustomEvent('notif', {
+                                detail: {
+                                    message: 'Kalori per porsi 20–120 kkal dan porsi per hari 1–8 kali.',
+                                    type: 'error'
+                                }
+                            }));
+                            return false;
+                        }
+                    }
 
-    return true;
-},
+                    return true;
+                },
 
-                
+
                 // 🔹 VALIDASI untuk simpan & lanjutkan
-     validateForm() {
+                validateForm() {
                     const b = this.selectedBayi;
 
                     // --- Wajib diisi ---
@@ -1301,7 +1354,7 @@ validateFormSaveOnly() {
                     }
                     //--- End Validasi tanggal lahir tidak boleh di masa depan --->
                     //--validasi string dan karakter > 100 untuk nama bayi---
-                      if (b.nama_bayi.length > 100 || !/^[a-zA-Z\s'-]+$/.test(b.nama_bayi)) {
+                    if (b.nama_bayi.length > 100 || !/^[a-zA-Z\s'-]+$/.test(b.nama_bayi)) {
                         window.dispatchEvent(new CustomEvent('notif', {
                             detail: {
                                 message: "Nama bayi tidak boleh lebih dari 100 karakter dan hanya boleh mengandung huruf, spasi, tanda petik, dan tanda hubung!",
@@ -1311,7 +1364,7 @@ validateFormSaveOnly() {
                         return false;
                     }
                     //--- End validasi string untuk nama bayi---
-            
+
                     //--- validasi jenis kelamin ---
                     const validGenders = ['Laki-laki', 'Perempuan'];
                     if (!validGenders.includes(b.jenis_kelamin)) {
@@ -1389,35 +1442,35 @@ validateFormSaveOnly() {
                             return false;
                         }
                     } else if (b.jenis_susu === 'Mix') {
-    if (!b.volume_asi || !b.kalori_per_porsi || !b.jumlah_porsi_per_hari) {
-        window.dispatchEvent(new CustomEvent('notif', {
-            detail: {
-                message: 'Semua field ASI dan Sufor wajib diisi untuk bayi dengan jenis susu campuran.',
-                type: 'error'
-            }
-        }));
-        return false;
-    }
-}
+                        if (!b.volume_asi || !b.kalori_per_porsi || !b.jumlah_porsi_per_hari) {
+                            window.dispatchEvent(new CustomEvent('notif', {
+                                detail: {
+                                    message: 'Semua field ASI dan Sufor wajib diisi untuk bayi dengan jenis susu campuran.',
+                                    type: 'error'
+                                }
+                            }));
+                            return false;
+                        }
+                    }
                     return true;
                 },
                 // 🔹 NOTIFIKASI
                 showSuccessMessage() {
                     Alpine.store('notif').trigger('success', 'Data bayi berhasil disimpan! ✅');
                 },
-showErrorMessage(error) {
-    let msg = 'Gagal menyimpan data bayi. ';
-    if (error.response?.data?.message) {
-        msg += error.response.data.message;
-    } else if (error.message) {
-        msg += error.message;
-    } else {
-        msg += 'Silakan coba lagi.';
-    }
+                showErrorMessage(error) {
+                    let msg = 'Gagal menyimpan data bayi. ';
+                    if (error.response?.data?.message) {
+                        msg += error.response.data.message;
+                    } else if (error.message) {
+                        msg += error.message;
+                    } else {
+                        msg += 'Silakan coba lagi.';
+                    }
 
-    const cleanMsg = this.sanitizeText(msg);
-    Alpine.store('notif').trigger('error', cleanMsg);
-},
+                    const cleanMsg = this.sanitizeText(msg);
+                    Alpine.store('notif').trigger('error', cleanMsg);
+                },
                 // 🔹 MODAL CONTROL
                 closeModal() {
                     this.modalOpen = false;
@@ -1529,14 +1582,14 @@ showErrorMessage(error) {
             }
         });
     </script>
-    
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    if (@json($errors->any())) {
-        Alpine.store('bayiData').modalOpen = true;
-    }
-});
-</script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (@json($errors->any())) {
+                Alpine.store('bayiData').modalOpen = true;
+            }
+        });
+    </script>
 
 </body>
 
