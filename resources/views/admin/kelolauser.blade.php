@@ -743,14 +743,16 @@
                             if (form) form.action = value;
                         });
 
-                        // Auto-open modal jika ada error validasi
+                        // Auto-open modal setelah notifikasi error hilang (6 detik)
                         @if ($errors->any())
-                            const oldRole = '{{ old('role') }}';
-                            if (oldRole === 'admin') {
-                                this.modalFormAdmin = true;
-                            } else if (oldRole === 'user') {
-                                this.modalFormOrangtua = true;
-                            }
+                            setTimeout(() => {
+                                const oldRole = '{{ old('role') }}';
+                                if (oldRole === 'admin') {
+                                    this.modalFormAdmin = true;
+                                } else if (oldRole === 'user') {
+                                    this.modalFormOrangtua = true;
+                                }
+                            }, 6000); // 6 detik, sesuai dengan waktu notifikasi hilang
                         @endif
                     },
 
