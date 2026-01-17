@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        [x-cloak] { 
-            display: none !important; 
+        [x-cloak] {
+            display: none !important;
         }
     </style>
 </head>
@@ -32,10 +32,10 @@
                     </svg>
                     Dashboard
                 </a>
-               <a href="{{ route('admin.users') }}"
+                <a href="{{ route('admin.users') }}"
                     class="flex items-center px-4 py-2 text-gray-700 bg-yellow-100 rounded">
-                    <svg class="w-5 h-5 mr-3 text-yellow-700"
-                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 mr-3 text-yellow-700" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
                         <path
                             d="M5.121 17.804A4 4 0 017.757 16h8.486a4 4 0 012.636 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z 125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z">
                         </path>
@@ -351,8 +351,8 @@
                                 </h3>
                                 <div class="mt-2">
                                     <p class="text-sm text-gray-500">
-                                        Apakah Anda yakin ingin menghapus user 
-                                        <span class="font-medium text-gray-700" x-text="userToDelete?.nama"></span>? 
+                                        Apakah Anda yakin ingin menghapus user
+                                        <span class="font-medium text-gray-700" x-text="userToDelete?.nama"></span>?
                                     </p>
                                 </div>
                             </div>
@@ -402,11 +402,12 @@
         <div x-show="modalFormOrangtua" x-cloak x-transition
             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white p-6 rounded shadow-lg w-full max-w-md overflow-y-auto max-h-[90vh] relative">
-                
-                 <button @click="closeAllModals()" class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+
+                <button @click="closeAllModals()"
+                    class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-semibold text-yellow-600">Tambah User</h3>
-                   
+
                 </div>
 
                 <form method="POST" action="{{ route('admin.users.store') }}">
@@ -422,8 +423,8 @@
                         value="{{ old('alamat') }}">
                     <input type="text" name="no_hp" value="{{ old('no_hp') }}"
                         class="mb-2 w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                        maxlength="20"
-                        required oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="No Hp">
+                        maxlength="20" required oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        placeholder="No Hp">
                     <input type="email" name="email" placeholder="Email" required
                         class="mb-2 w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
                         value="{{ old('email') }}">
@@ -446,12 +447,13 @@
         <!-- Modal Tambah Admin -->
         <div x-show="modalFormAdmin" x-cloak x-transition
             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div class="bg-white p-6 rounded shadow-lg w-full max-w-md overflow-y-auto max-h-[90vh] relative">
-                
-                 <button @click="closeAllModals()" class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+            <div class="bg-white p-6 rounded shadow-lg w-full max-w-md overflow-y-auto max-h-[90vh] relative">
+
+                <button @click="closeAllModals()"
+                    class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-lg font-semibold text-yellow-600">Tambah Admin</h2>
-                  
+
                 </div>
                 <form method="POST" action="{{ route('admin.users.store') }}">
                     @csrf
@@ -489,189 +491,206 @@
             </div>
         </div>
 
-<!-- Modal preview User -->
-<div x-show="modalLihat" x-cloak 
-    class="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
-    @click.self="modalLihat = false" 
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 scale-90" 
-    x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-in duration-200" 
-    x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-90">
+        <!-- Modal preview User -->
+        <div x-show="modalLihat" x-cloak class="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
+            @click.self="modalLihat = false" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-90">
 
-    <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl">
-        <!-- Tombol Close -->
-        <button @click="modalLihat = false"
-            class="absolute top-4 right-4 z-10 text-gray-500 hover:text-red-600 text-2xl font-bold">
-            &times;
-        </button>
+            <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl">
+                <!-- Tombol Close -->
+                <button @click="modalLihat = false"
+                    class="absolute top-4 right-4 z-10 text-gray-500 hover:text-red-600 text-2xl font-bold">
+                    &times;
+                </button>
 
-        <div class="overflow-y-auto max-h-[90vh]">
-            <!-- Header -->
-            <div class="relative p-8 border-b">
-                <h2 class="text-3xl font-bold text-gray-800 text-center" x-text="lihatData.nama || 'Detail User'"></h2>
-                <p class="text-center text-gray-500 mt-1">Informasi Pengguna</p>
-            </div>
-
-            <!-- Content -->
-            <div class="p-8 space-y-6">
-                <!-- Info Cards Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-200">
-                        <p class="text-xs text-blue-600 font-semibold mb-1">Username</p>
-                        <p class="text-lg font-bold text-blue-900 truncate" x-text="lihatData.username || '-'"></p>
+                <div class="overflow-y-auto max-h-[90vh]">
+                    <!-- Header -->
+                    <div class="relative p-8 border-b">
+                        <h2 class="text-3xl font-bold text-gray-800 text-center"
+                            x-text="lihatData.nama || 'Detail User'"></h2>
+                        <p class="text-center text-gray-500 mt-1">Informasi Pengguna</p>
                     </div>
-                    <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-200">
-                        <p class="text-xs text-purple-600 font-semibold mb-1">Role</p>
-                        <p class="text-lg font-bold text-purple-900" x-text="lihatData.role || '-'"></p>
-                    </div>
-                    <div class="bg-green-50 p-4 rounded-xl text-center border border-green-200 col-span-2 md:col-span-1">
-                        <p class="text-xs text-green-600 font-semibold mb-1">No HP</p>
-                        <p class="text-lg font-bold text-green-900" x-text="lihatData.no_hp || '-'"></p>
-                    </div>
-                </div>
 
-                <!-- Informasi Kontak -->
-                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-                    <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                        Informasi Kontak
-                    </h3>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <span class="text-gray-600 text-sm">Email:</span>
-                            <p class="font-semibold text-gray-800 break-all" x-text="lihatData.email || '-'"></p>
+                    <!-- Content -->
+                    <div class="p-8 space-y-6">
+                        <!-- Info Cards Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-200">
+                                <p class="text-xs text-blue-600 font-semibold mb-1">Username</p>
+                                <p class="text-lg font-bold text-blue-900 truncate"
+                                    x-text="lihatData.username || '-'"></p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-200">
+                                <p class="text-xs text-purple-600 font-semibold mb-1">Role</p>
+                                <p class="text-lg font-bold text-purple-900" x-text="lihatData.role || '-'"></p>
+                            </div>
+                            <div
+                                class="bg-green-50 p-4 rounded-xl text-center border border-green-200 col-span-2 md:col-span-1">
+                                <p class="text-xs text-green-600 font-semibold mb-1">No HP</p>
+                                <p class="text-lg font-bold text-green-900" x-text="lihatData.no_hp || '-'"></p>
+                            </div>
                         </div>
-                        <div>
-                            <span class="text-gray-600 text-sm">Alamat:</span>
-                            <p class="font-semibold text-gray-800" x-text="lihatData.alamat || '-'"></p>
+
+                        <!-- Informasi Kontak -->
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+                            <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                    </path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                                Informasi Kontak
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-gray-600 text-sm">Email:</span>
+                                    <p class="font-semibold text-gray-800 break-all" x-text="lihatData.email || '-'">
+                                    </p>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 text-sm">Alamat:</span>
+                                    <p class="font-semibold text-gray-800" x-text="lihatData.alamat || '-'"></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Data Bayi -->
-                <div class="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-xl border border-pink-200">
-                    <h3 class="text-lg font-bold text-pink-800 mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                        </svg>
-                        Data Bayi
-                        <span class="ml-2 text-sm font-normal text-pink-600" x-show="lihatData.bayis && lihatData.bayis.length > 0">
-                            (<span x-text="lihatData.bayis.length"></span> bayi)
-                        </span>
-                    </h3>
+                        <!-- Data Bayi -->
+                        <div class="bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-xl border border-pink-200">
+                            <h3 class="text-lg font-bold text-pink-800 mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                Data Bayi
+                                <span class="ml-2 text-sm font-normal text-pink-600"
+                                    x-show="lihatData.bayis && lihatData.bayis.length > 0">
+                                    (<span x-text="lihatData.bayis.length"></span> bayi)
+                                </span>
+                            </h3>
 
-                    <template x-if="lihatData.bayis && lihatData.bayis.length > 0">
-                        <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
-                            <template x-for="(bayi, index) in lihatData.bayis" :key="bayi.id || bayi.nama_bayi">
-                                <div class="bg-white p-5 rounded-xl shadow-sm border-2 hover:shadow-md transition-all"
-                                    :class="[
-                                        'border-yellow-300',
-                                        'border-pink-300',
-                                        'border-blue-300',
-                                        'border-green-300'
-                                    ][index % 4]">
-                                    
-                                    <!-- Nama Bayi Header -->
-                                    <div class="flex items-center mb-3 pb-2 border-b">
-                                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mr-3"
+                            <template x-if="lihatData.bayis && lihatData.bayis.length > 0">
+                                <div class="space-y-4 max-h-96 overflow-y-auto pr-2">
+                                    <template x-for="(bayi, index) in lihatData.bayis"
+                                        :key="bayi.id || bayi.nama_bayi">
+                                        <div class="bg-white p-5 rounded-xl shadow-sm border-2 hover:shadow-md transition-all"
                                             :class="[
-                                                'bg-yellow-400',
-                                                'bg-pink-400',
-                                                'bg-blue-400',
-                                                'bg-green-400'
+                                                'border-yellow-300',
+                                                'border-pink-300',
+                                                'border-blue-300',
+                                                'border-green-300'
                                             ][index % 4]">
-                                            <span x-text="(bayi.nama_bayi || '?').charAt(0).toUpperCase()"></span>
-                                        </div>
-                                        <h4 class="font-bold text-lg text-gray-800" x-text="bayi.nama_bayi || '-'"></h4>
-                                    </div>
 
-                                    <!-- Info Grid -->
-                                    <div class="grid grid-cols-2 gap-3 text-sm">
-                                        <div>
-                                            <p class="text-gray-500 text-xs">Jenis Kelamin</p>
-                                            <p class="font-semibold text-gray-800" x-text="bayi.jenis_kelamin || '-'"></p>
-                                        </div>
-                                        <div>
-                                            <p class="text-gray-500 text-xs">Tanggal Lahir</p>
-                                            <p class="font-semibold text-gray-800"
-                                                x-text="bayi.tanggal_lahir ? new Date(bayi.tanggal_lahir).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'"></p>
-                                        </div>
-                                        <div>
-                                            <p class="text-gray-500 text-xs">Berat</p>
-                                            <p class="font-semibold text-gray-800">
-                                                <span x-text="bayi.berat > 0 ? bayi.berat + ' kg' : '-'"></span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="text-gray-500 text-xs">Tinggi</p>
-                                            <p class="font-semibold text-gray-800">
-                                                <span x-text="bayi.tinggi > 0 ? bayi.tinggi + ' cm' : '-'"></span>
-                                            </p>
-                                        </div>
-                                        <div class="col-span-2">
-                                            <p class="text-gray-500 text-xs">Jenis Susu</p>
-                                            <p class="font-semibold text-gray-800" x-text="bayi.jenis_susu || '-'"></p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Info Susu Formula -->
-                                    <template x-if="bayi.jenis_susu === 'Sufor' || bayi.jenis_susu === 'Mix'">
-                                        <div class="mt-3 pt-3 border-t grid grid-cols-2 gap-3 text-sm">
-                                            <div>
-                                                <p class="text-gray-500 text-xs">Kalori per Porsi</p>
-                                                <p class="font-semibold text-orange-600">
-                                                    <span x-text="bayi.kalori_per_porsi > 0 ? bayi.kalori_per_porsi + ' kcal' : '-'"></span>
-                                                </p>
+                                            <!-- Nama Bayi Header -->
+                                            <div class="flex items-center mb-3 pb-2 border-b">
+                                                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mr-3"
+                                                    :class="[
+                                                        'bg-yellow-400',
+                                                        'bg-pink-400',
+                                                        'bg-blue-400',
+                                                        'bg-green-400'
+                                                    ][index % 4]">
+                                                    <span
+                                                        x-text="(bayi.nama_bayi || '?').charAt(0).toUpperCase()"></span>
+                                                </div>
+                                                <h4 class="font-bold text-lg text-gray-800"
+                                                    x-text="bayi.nama_bayi || '-'"></h4>
                                             </div>
-                                            <div>
-                                                <p class="text-gray-500 text-xs">Porsi per Hari</p>
-                                                <p class="font-semibold text-orange-600">
-                                                    <span x-text="bayi.jumlah_porsi_per_hari > 0 ? bayi.jumlah_porsi_per_hari : '-'"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </template>
 
-                                    <!-- Info ASI -->
-                                    <template x-if="bayi.jenis_susu === 'ASI' || bayi.jenis_susu === 'Mix'">
-                                        <div class="mt-3 pt-3 border-t">
-                                            <p class="text-gray-500 text-xs">Volume ASI</p>
-                                            <p class="font-semibold text-green-600">
-                                                <span x-text="bayi.volume_asi > 0 ? bayi.volume_asi + ' ml' : '-'"></span>
-                                            </p>
+                                            <!-- Info Grid -->
+                                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                                <div>
+                                                    <p class="text-gray-500 text-xs">Jenis Kelamin</p>
+                                                    <p class="font-semibold text-gray-800"
+                                                        x-text="bayi.jenis_kelamin || '-'"></p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-gray-500 text-xs">Tanggal Lahir</p>
+                                                    <p class="font-semibold text-gray-800"
+                                                        x-text="bayi.tanggal_lahir ? new Date(bayi.tanggal_lahir).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '-'">
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-gray-500 text-xs">Berat</p>
+                                                    <p class="font-semibold text-gray-800">
+                                                        <span
+                                                            x-text="bayi.berat > 0 ? bayi.berat + ' kg' : '-'"></span>
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-gray-500 text-xs">Tinggi</p>
+                                                    <p class="font-semibold text-gray-800">
+                                                        <span
+                                                            x-text="bayi.tinggi > 0 ? bayi.tinggi + ' cm' : '-'"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <p class="text-gray-500 text-xs">Jenis Susu</p>
+                                                    <p class="font-semibold text-gray-800"
+                                                        x-text="bayi.jenis_susu || '-'"></p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Info Susu Formula -->
+                                            <template x-if="bayi.jenis_susu === 'Sufor' || bayi.jenis_susu === 'Mix'">
+                                                <div class="mt-3 pt-3 border-t grid grid-cols-2 gap-3 text-sm">
+                                                    <div>
+                                                        <p class="text-gray-500 text-xs">Kalori per Porsi</p>
+                                                        <p class="font-semibold text-orange-600">
+                                                            <span
+                                                                x-text="bayi.kalori_per_porsi > 0 ? bayi.kalori_per_porsi + ' kcal' : '-'"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-gray-500 text-xs">Porsi per Hari</p>
+                                                        <p class="font-semibold text-orange-600">
+                                                            <span
+                                                                x-text="bayi.jumlah_porsi_per_hari > 0 ? bayi.jumlah_porsi_per_hari : '-'"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </template>
+
+                                            <!-- Info ASI -->
+                                            <template x-if="bayi.jenis_susu === 'ASI' || bayi.jenis_susu === 'Mix'">
+                                                <div class="mt-3 pt-3 border-t">
+                                                    <p class="text-gray-500 text-xs">Volume ASI</p>
+                                                    <p class="font-semibold text-green-600">
+                                                        <span
+                                                            x-text="bayi.volume_asi > 0 ? bayi.volume_asi + ' ml' : '-'"></span>
+                                                    </p>
+                                                </div>
+                                            </template>
                                         </div>
                                     </template>
                                 </div>
                             </template>
-                        </div>
-                    </template>
 
-                    <template x-if="!lihatData.bayis || lihatData.bayis.length === 0">
-                        <div class="text-center py-8">
-                            <svg class="w-16 h-16 mx-auto text-gray-300 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                            </svg>
-                            <p class="text-gray-500 italic">Belum ada data bayi</p>
+                            <template x-if="!lihatData.bayis || lihatData.bayis.length === 0">
+                                <div class="text-center py-8">
+                                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <p class="text-gray-500 italic">Belum ada data bayi</p>
+                                </div>
+                            </template>
                         </div>
-                    </template>
-                </div>
 
-                <!-- Tombol Tutup -->
-                <div class="flex justify-end pt-4">
-                    <button @click="closeAllModals()"
-                        class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 font-semibold transition-colors">
-                        Tutup
-                    </button>
+                        <!-- Tombol Tutup -->
+                        <div class="flex justify-end pt-4">
+                            <button @click="closeAllModals()"
+                                class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 font-semibold transition-colors">
+                                Tutup
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
         <!-- JavaScript -->
         <script>
             function modalHandler() {
@@ -723,11 +742,23 @@
                         this.$watch('hapusUrl', value => {
                             if (form) form.action = value;
                         });
+
+                        // Auto-open modal jika ada error validasi
+                        @if ($errors->any())
+                            const oldRole = '{{ old('role') }}';
+                            if (oldRole === 'admin') {
+                                this.modalFormAdmin = true;
+                            } else if (oldRole === 'user') {
+                                this.modalFormOrangtua = true;
+                            }
+                        @endif
                     },
 
                     openModal(url, userName) {
                         this.hapusUrl = url;
-                        this.userToDelete = { nama: userName };
+                        this.userToDelete = {
+                            nama: userName
+                        };
                         this.modalHapus = true;
                     },
 
@@ -776,7 +807,6 @@
                 }
             }
         </script>
-
 </body>
 
 </html>
