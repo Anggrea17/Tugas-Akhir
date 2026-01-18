@@ -24,7 +24,7 @@ class RekomendasiController extends Controller
             return redirect()->route('landingpg')->withErrors(['bayi' => 'Bayi tidak ditemukan.']);
         }
 
-        // ❗ Cek kelengkapan data bayi
+        // mengecek kelengkapan data bayi
         $dataKurang = !$bayi->berat || !$bayi->tinggi || (
             !$bayi->volume_asi &&
             !($bayi->kalori_per_porsi && $bayi->jumlah_porsi_per_hari)
@@ -54,7 +54,7 @@ class RekomendasiController extends Controller
                 ->withErrors(['bayi' => 'Lengkapi data bayi terlebih dahulu.']);
         }
 
-        // ✅ Kalau data lengkap → kalau AJAX, kirim redirect
+        //  Kalau data lengkap =>kalau AJAX, kirim redirect
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
@@ -63,7 +63,7 @@ class RekomendasiController extends Controller
             ]);
         }
 
-        // 🍼 Ambil data bayi
+        // mengambil data bayi
         $tanggal_lahir = $bayi->tanggal_lahir;
         $usia = Carbon::parse($tanggal_lahir)->diffInMonths(Carbon::now());
         $berat = $bayi->berat;
@@ -99,6 +99,7 @@ class RekomendasiController extends Controller
 
         $total_kalori_susu = $kalori_asi + $kalori_sufor;
         $kalori_mpasi = max(0, $eer - $total_kalori_susu);
+
 // 🔹 Penyesuaian proporsi MPASI berdasarkan usia
 if ($usia >= 6 && $usia <= 8) {
     $minimal_mpasi = round($eer * 0.30);
@@ -205,6 +206,7 @@ $resepPagi  = $getUniqueRecipes($rangePagi, $selectedRecipeIds, $usia, 1, 15, nu
 $resepSiang = $getUniqueRecipes($rangeSiang, $selectedRecipeIds, $usia, 1, 15, null, true);
 $resepMalam = $getUniqueRecipes($rangeMalam, $selectedRecipeIds, $usia, 1, 15, null, true);
 $resepSnack = $getUniqueRecipes($rangeSnack, $selectedRecipeIds, $usia, 1, 15, 3);
+
 // 🔹 Format angka supaya konsisten
 $berat = (int) $bayi->berat == $bayi->berat ? number_format($bayi->berat, 0, '.', '') : number_format($bayi->berat, 1, '.', '');
 $tinggi = (int) $bayi->tinggi == $bayi->tinggi ? number_format($bayi->tinggi, 0, '.', '') : number_format($bayi->tinggi, 1, '.', '');
