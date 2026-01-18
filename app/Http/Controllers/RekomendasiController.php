@@ -131,7 +131,7 @@ $rangeSiang = $range($siang);
 $rangeMalam = $range($malam);
 $rangeSnack = $range($snack);
 
-// 🔹 Fungsi ambil resep unik dengan batas ±20%
+// mengambil resep unik dengan batas ±20%
 $getUniqueRecipes = function(
     $targetRange,
     &$selectedIds,
@@ -155,7 +155,7 @@ $getUniqueRecipes = function(
         $baseQuery->where('kategori_id', '!=', 3);
     }
 
-    // 1️⃣ PRIORITAS PERTAMA → Cari energi terdekat dengan target
+    // 1) PRIORITAS PERTAMA => Cari energi terdekat dengan target
    $closest = (clone $baseQuery)
     ->whereNotIn('id', $selectedIds)
     ->orderByRaw("ABS(energi - {$targetCal}) ASC")
@@ -169,7 +169,7 @@ if ($closest->isNotEmpty()) {
 }
 
 
-    // 2️⃣ PRIORITAS KEDUA → Jika tidak ada, cari dalam range ±20%
+    // 2) PRIORITAS KEDUA => Jika tidak ada, cari dalam range ±20%
     $candidates = (clone $baseQuery)
         ->whereBetween('energi', [$targetRange['min'], $targetRange['max']])
         ->whereNotIn('id', $selectedIds)
@@ -182,7 +182,7 @@ if ($closest->isNotEmpty()) {
         return collect([$recipe]);
     }
 
-    // 3️⃣ PRIORITAS KETIGA → Jika ±20% juga tidak ada, ambil energi di atas target terdekat
+    // 3️) PRIORITAS KETIGA => Jika ±20% juga tidak ada, ambil energi di atas target terdekat
     $fallback = (clone $baseQuery)
         ->where('energi', '>=', $targetCal)
         ->whereNotIn('id', $selectedIds)
@@ -233,7 +233,7 @@ if (!is_null($bayi->kalori_per_porsi)) {
                 'bayi', 'user', 'usia', 'berat', 'tinggi','volume_asi',
                 'eer', 'kalori_asi', 'kalori_sufor', 'kalori_mpasi','kalori_per_porsi',
                 'pagi', 'siang', 'malam', 'snack',
-                'resepPagi', 'resepSiang', 'resepMalam', 'resepSnack'
+                'resepPagi', 'resepSiang', 'resepMalam', 'resepSnack', 'tanggal_lahir'
             ))
             ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
             ->header('Pragma', 'no-cache')
