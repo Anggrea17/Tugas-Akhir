@@ -268,7 +268,8 @@
     <!-- Header -->
     <header class="text-center py-10 bg-gradient-to-br from-yellow-100 via-yellow-50 to-yellow-95 rounded-3xl  ">
         <h2 class="text-3xl font-bold text-yellow-900">Hasil Rekomendasi MPASI</h2>
-        <p class="text-gray-600 mt-2">Berikut pembagian kebutuhan kalori untuk bayi berdasarkan data yang dimasukkan
+        <p class="text-gray-600 mt-2">Berikut pembagian kebutuhan kalori minimum untuk bayi berdasarkan data yang
+            dimasukkan
         </p>
     </header>
     <!-- Error Message -->
@@ -333,7 +334,8 @@
                                     sesuai untuk usia {{ $usia }} bulan ({{ $bayi->jenis_kelamin }}).
                                 </p>
                                 <p class="text-sm text-gray-600 mt-1">
-                                    💡 Rekomendasi MPASI diberikan untuk menjaga kecukupan kalori harian dan mendukung
+                                    💡 Rekomendasi MPASI diberikan untuk menjaga kecukupan kalori minimum harian dan
+                                    mendukung
                                     pertumbuhan optimal.
                                 </p>
                             </div>
