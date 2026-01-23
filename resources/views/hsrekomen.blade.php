@@ -554,7 +554,7 @@
                     🍽️ Pembagian Kalori Minimum Harian & Rekomendasi MPASI
                 </h3>
                 <button onclick="refreshRekomendasi()"
-                    class="text-sm bg-green-700 hover:bg-yellow-800 text-white semibold-300 px-3 py-1 rounded shadow">
+                    class="text-sm bg-green-700 hover:bg-yellow-800 text-white px-3 py-1 rounded shadow">
                     🔄 Refresh
                 </button>
             </div>
@@ -571,17 +571,16 @@
                     </h4>
 
                     <div class="grid md:grid-cols-2 gap-4 mt-2">
-                        @foreach (${'resep' . $waktu} as $index => $mpasi)
-                            <div class="bg-yellow-50 border border-yellow-200 p-4 rounded shadow"
-                                x-data="{ open: false }">
-                                <h4 class="font-semibold text-lg text-yellow-900 flex items-center space-x-2">
-                                    @if (!empty($mpasi['gambar']))
-                                        <img src="{{ asset($mpasi->gambar) }}"
-                                            alt="gambar menu {{ $mpasi->nama_menu }}"
-                                            class="w-10 h-10 object-cover rounded-md">
-                                    @endif
-                                    <span>{{ $mpasi['nama_menu'] }}</span>
+
+                        @forelse (${'resep' . $waktu} as $mpasi)
+                            <div x-data="{ open: false }"
+                                class="bg-yellow-50 border border-yellow-200 p-4 rounded shadow">
+
+                                <!-- KARTU RESEP -->
+                                <h4 class="font-semibold text-lg text-yellow-900">
+                                    {{ $mpasi->nama_menu }}
                                 </h4>
+
                                 <button @click="open = true"
                                     class="mt-2 text-sm text-white bg-yellow-600 hover:bg-yellow-700 px-4 py-1 rounded">
                                     Lihat Detail
@@ -689,7 +688,14 @@
                                 </div>
 
                             </div>
-                        @endforeach
+
+                        @empty
+                            <div
+                                class="md:col-span-2 text-center bg-red-50 border border-red-200 text-red-700 p-4 rounded">
+                                ❌ Tidak ada data resep yang tersedia untuk {{ strtolower($waktu) }}
+                            </div>
+                        @endforelse
+
                     </div>
                 </div>
             @endforeach
