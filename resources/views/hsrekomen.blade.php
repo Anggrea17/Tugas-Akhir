@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=3">
     <meta charset="UTF-8">
     <title>Hasil Rekomendasi MPASI</title>
-     @include('google-analytics')  <!-- Panggil file GA di sini -->
+    @include('google-analytics') <!-- Panggil file GA di sini -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,13 +29,13 @@
                     <a href="{{ route('rekomendasi') }}"
                         class="text-black-600 font-semibold hover:text-yellow-600 transition-colors duration-200">
                         Rekomendasi MPASI
-                    </button>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="text-black-600 font-semibold hover:text-yellow-600 transition-colors duration-200">
-                        Rekomendasi MPASI
-                    </a>
-                @endauth
+                        </button>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="text-black-600 font-semibold hover:text-yellow-600 transition-colors duration-200">
+                            Rekomendasi MPASI
+                        </a>
+                    @endauth
             </li>
             <!-- tampilan untuk halaman perkembangan bayi -->
             @auth
@@ -134,133 +134,134 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20 13V7a1 1 0 00-1-1h-6l-2-2H5a1 1 0 00-1 1v6h16zM4 15h16v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z" />
                     </svg> <span>Rekomendasi</span>
-                </button>
-            @else
-                <a href="{{ route('login') }}" class="flex flex-col items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1 text-gray-700" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20 13V7a1 1 0 00-1-1h-6l-2-2H5a1 1 0 00-1 1v6h16zM4 15h16v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z" />
-                    </svg> <span>Rekomendasi</span>
-                </a>
-            @endauth
-            <a href="{{ route('artikel') }}" class="flex flex-col items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2z" />
-                </svg>
-                <span>Artikel</span>
-            </a>
-            <!-- tampilan untuk halaman perkembangan bayi -->
-            @auth
-                <a href="{{ route('perkembangan.index') }}" class="flex flex-col items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 17v-6a2 2 0 012-2h6M9 7l3 3m0 0l3-3m-3 3V3m5 18H5a2 2 0 01-2-2V5a2 2 0 012-2h4l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2z" />
-                    </svg>
-                    <span>Perkembangan Bayi</span>
-                </a>
-            @endauth
-            <!-- Dashboard hanya muncul untuk admin -->
-            @auth
-                @if (Auth::user()->role == 'admin')
-                    <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center">
+                    </button>
+                @else
+                    <a href="{{ route('login') }}" class="flex flex-col items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1 text-gray-700" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 3h18v4H3V3zm0 6h18v12H3V9zm4 3h4v6H7v-6z" />
-                        </svg>
-                        <span>Dashboard</span>
+                                d="M20 13V7a1 1 0 00-1-1h-6l-2-2H5a1 1 0 00-1 1v6h16zM4 15h16v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2z" />
+                        </svg> <span>Rekomendasi</span>
                     </a>
-                @endif
-            @endauth
+                @endauth
+                <a href="{{ route('artikel') }}" class="flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2z" />
+                    </svg>
+                    <span>Artikel</span>
+                </a>
+                <!-- tampilan untuk halaman perkembangan bayi -->
+                @auth
+                    <a href="{{ route('perkembangan.index') }}" class="flex flex-col items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 17v-6a2 2 0 012-2h6M9 7l3 3m0 0l3-3m-3 3V3m5 18H5a2 2 0 01-2-2V5a2 2 0 012-2h4l2 2h6a2 2 0 012 2v10a2 2 0 01-2 2z" />
+                        </svg>
+                        <span>Perkembangan Bayi</span>
+                    </a>
+                @endauth
+                <!-- Dashboard hanya muncul untuk admin -->
+                @auth
+                    @if (Auth::user()->role == 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1 text-gray-700" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h18v4H3V3zm0 6h18v12H3V9zm4 3h4v6H7v-6z" />
+                            </svg>
+                            <span>Dashboard</span>
+                        </a>
+                    @endif
+                @endauth
 
-            @auth
-                <div x-data="{ open: false }" class="relative flex flex-col items-center">
-                    <button @click="open = !open" class="focus:outline-none flex flex-col items-center">
-                        <img src="{{ asset('bahan/pasangan.png') }}" alt="User"
-                            class="w-6 h-6 rounded-full border-2 border-yellow-300 mb-1">
-                        <span class="text-xs sm:text-sm">Profil</span>
-                    </button>
-                    <div x-show="open" @click.away="open = false"
-                        class="fixed sm:absolute 
+                @auth
+                    <div x-data="{ open: false }" class="relative flex flex-col items-center">
+                        <button @click="open = !open" class="focus:outline-none flex flex-col items-center">
+                            <img src="{{ asset('bahan/pasangan.png') }}" alt="User"
+                                class="w-6 h-6 rounded-full border-2 border-yellow-300 mb-1">
+                            <span class="text-xs sm:text-sm">Profil</span>
+                        </button>
+                        <div x-show="open" @click.away="open = false"
+                            class="fixed sm:absolute 
                    bottom-16 sm:bottom-full 
                    right-1 sm:right-0 
                    sm:mb-2 
                    w-80 sm:w-48 
                    bg-white rounded-lg shadow-xl text-gray-800 p-4 sm:p-3 z-50 text-left
                    max-w-[calc(100vw-0.5rem)] sm:max-w-none"
-                        x-transition:enter="transition ease-out duration-200"
-                        x-transition:enter-start="opacity-0 transform translate-y-2 scale-95"
-                        x-transition:enter-end="opacity-100 transform translate-y-0 scale-100"
-                        x-transition:leave="transition ease-in duration-150"
-                        x-transition:leave-start="opacity-100 transform translate-y-0 scale-100"
-                        x-transition:leave-end="opacity-0 transform translate-y-2 scale-95">
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform translate-y-2 scale-95"
+                            x-transition:enter-end="opacity-100 transform translate-y-0 scale-100"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform translate-y-0 scale-100"
+                            x-transition:leave-end="opacity-0 transform translate-y-2 scale-95">
 
-                        <!-- User Info Section -->
-                        <div class="flex items-center space-x-3 mb-3">
-                            <img src="{{ asset('bahan/pasangan.png') }}" alt="User"
-                                class="w-12 h-12 sm:w-8 sm:h-8 rounded-full flex-shrink-0">
-                            <div class="min-w-0 flex-1">
-                                <p class="font-semibold text-base sm:text-xs truncate text-gray-800">
-                                    {{ Auth::user()->nama }}
-                                </p>
-                                <p class="text-sm sm:text-xs text-gray-500 truncate">
-                                    {{ Auth::user()->email }}
-                                </p>
+                            <!-- User Info Section -->
+                            <div class="flex items-center space-x-3 mb-3">
+                                <img src="{{ asset('bahan/pasangan.png') }}" alt="User"
+                                    class="w-12 h-12 sm:w-8 sm:h-8 rounded-full flex-shrink-0">
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-semibold text-base sm:text-xs truncate text-gray-800">
+                                        {{ Auth::user()->nama }}
+                                    </p>
+                                    <p class="text-sm sm:text-xs text-gray-500 truncate">
+                                        {{ Auth::user()->email }}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
 
-                        <hr class="my-3 border-gray-200">
+                            <hr class="my-3 border-gray-200">
 
-                        <!-- Action Buttons - Side by Side -->
-                        <div class="flex gap-3 sm:flex-col sm:space-y-1 sm:gap-0">
-                            <!-- Edit Profile Button -->
-                            <a href="{{ route('profile.edit') }}"
-                                class="flex items-center justify-center gap-2 flex-1 sm:w-full px-4 py-3 sm:px-2 sm:py-1.5 
+                            <!-- Action Buttons - Side by Side -->
+                            <div class="flex gap-3 sm:flex-col sm:space-y-1 sm:gap-0">
+                                <!-- Edit Profile Button -->
+                                <a href="{{ route('profile.edit') }}"
+                                    class="flex items-center justify-center gap-2 flex-1 sm:w-full px-4 py-3 sm:px-2 sm:py-1.5 
                            bg-indigo-500 text-white text-base sm:text-xs rounded-xl sm:rounded 
                            hover:bg-indigo-600 transition-colors duration-200
                            focus:outline-none focus:ring-2 focus:ring-indigo-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-3 sm:w-3 flex-shrink-0"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2L9 17H7v-2l8-8z" />
-                                </svg>
-                                <span class="hidden sm:inline">Edit Profile</span>
-                                <span class="sm:hidden font-medium">Edit</span>
-                            </a>
-
-                            <!-- Logout Button -->
-                            <form method="POST" action="{{ route('logout') }}" class="flex-1 sm:w-full">
-                                @csrf
-                                <button type="submit"
-                                    class="flex items-center justify-center gap-2 w-full px-4 py-3 sm:px-2 sm:py-1.5 
-                               bg-red-500 text-white text-base sm:text-xs rounded-xl sm:rounded 
-                               hover:bg-red-600 transition-colors duration-200
-                               focus:outline-none focus:ring-2 focus:ring-red-300">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-3 sm:w-3 flex-shrink-0"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                            d="M15.232 5.232l3.536 3.536M9 11l6-6m2 2L9 17H7v-2l8-8z" />
                                     </svg>
-                                    <span class="font-medium">Logout</span>
-                                </button>
-                            </form>
+                                    <span class="hidden sm:inline">Edit Profile</span>
+                                    <span class="sm:hidden font-medium">Edit</span>
+                                </a>
+
+                                <!-- Logout Button -->
+                                <form method="POST" action="{{ route('logout') }}" class="flex-1 sm:w-full">
+                                    @csrf
+                                    <button type="submit"
+                                        class="flex items-center justify-center gap-2 w-full px-4 py-3 sm:px-2 sm:py-1.5 
+                               bg-red-500 text-white text-base sm:text-xs rounded-xl sm:rounded 
+                               hover:bg-red-600 transition-colors duration-200
+                               focus:outline-none focus:ring-2 focus:ring-red-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 sm:h-3 sm:w-3 flex-shrink-0" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                        <span class="font-medium">Logout</span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @else
-                <a href="{{ route('login') }}" class="flex flex-col items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h7a1 1 0 011 1v1" />
-                    </svg>
-                    <span>Login</span>
-                </a>
-            @endauth
+                @else
+                    <a href="{{ route('login') }}" class="flex flex-col items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h7a1 1 0 011 1v1" />
+                        </svg>
+                        <span>Login</span>
+                    </a>
+                @endauth
         </div>
     </div>
 
@@ -285,8 +286,205 @@
             </div>
         </div>
     @endif
+    <!--tampilkan status pertumbuhan sebagai notifikasi -->
+    <div x-data="{ showNotif: true }" x-show="showNotif" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform translate-y-4"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-4">
 
-    <!-- Hasil Perhitungan -->
+        @if ($status_pertumbuhan == 'Pertumbuhan dalam rentang wajar')
+            <!-- NOTIFIKASI STATUS NORMAL -->
+            <div
+                class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg p-6 border-2 border-green-300 relative">
+                <button @click="showNotif = false"
+                    class="absolute top-4 right-4 text-green-600 hover:text-green-800 transition-colors duration-200 focus:outline-none group"
+                    aria-label="Tutup notifikasi">
+                    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div class="flex items-start space-x-4 pr-8">
+                    <div class="bg-green-500 rounded-full p-3 shadow-md flex-shrink-0">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="inline-block px-3 py-1 bg-green-500 text-white rounded-full text-xs font-bold uppercase shadow-sm">
+                                Status Normal
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-3">Status Pertumbuhan</h3>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-green-200">
+                            <p class="text-gray-700 leading-relaxed mb-3">
+                                ✅ Pertumbuhan bayi berada dalam rentang wajar sesuai usia dan jenis kelamin.
+                            </p>
+                            <div class="bg-green-50 rounded-lg p-3 border-l-4 border-green-500">
+                                <p class="text-sm text-gray-700">
+                                    <strong class="text-green-700">📊 Berat badan {{ $berat }} kg</strong>
+                                    sesuai untuk usia {{ $usia }} bulan ({{ $bayi->jenis_kelamin }}).
+                                </p>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    💡 Rekomendasi MPASI diberikan untuk menjaga kecukupan kalori harian dan mendukung
+                                    pertumbuhan optimal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @elseif ($status_pertumbuhan == 'Berat badan kurang')
+            <!-- NOTIFIKASI BERAT BADAN KURANG -->
+            <div
+                class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl shadow-lg p-6 border-2 border-red-300 relative">
+                <button @click="showNotif = false"
+                    class="absolute top-4 right-4 text-red-600 hover:text-red-800 transition-colors duration-200 focus:outline-none group"
+                    aria-label="Tutup notifikasi">
+                    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div class="flex items-start space-x-4 pr-8">
+                    <div class="bg-red-500 rounded-full p-3 shadow-md flex-shrink-0">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="inline-block px-3 py-1 bg-red-500 text-white rounded-full text-xs font-bold uppercase shadow-sm">
+                                Perlu Perhatian Khusus
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-red-900 mb-3">Status Pertumbuhan</h3>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-red-200">
+                            <p class="text-gray-700 leading-relaxed mb-3">
+                                ⚠️ Berat badan bayi di bawah rentang normal.
+                            </p>
+                            <div class="bg-red-50 rounded-lg p-3 border-l-4 border-red-500">
+                                <p class="text-sm text-gray-700">
+                                    <strong class="text-red-700">📊 Berat badan {{ $berat }} kg</strong> di
+                                    bawah standar untuk usia {{ $usia }} bulan ({{ $bayi->jenis_kelamin }}).
+                                </p>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    💡 <strong>Sangat disarankan:</strong> Pastikan MPASI mengandung kalori tinggi
+                                    sesuai rekomendasi. Segera konsultasikan dengan dokter atau ahli gizi untuk
+                                    penanganan lebih lanjut.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @elseif ($status_pertumbuhan == 'Berat badan berlebih')
+            <!-- NOTIFIKASI BERAT BADAN BERLEBIH -->
+            <div
+                class="bg-gradient-to-br from-yellow-50 via-yellow-100 to-yellow-200 rounded-2xl shadow-lg p-6 border-2 border-yellow-400 relative">
+                <button @click="showNotif = false"
+                    class="absolute top-4 right-4 text-yellow-700 hover:text-yellow-900 transition-colors duration-200 focus:outline-none group"
+                    aria-label="Tutup notifikasi">
+                    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div class="flex items-start space-x-4 pr-8">
+                    <div class="bg-yellow-500 rounded-full p-3 shadow-md flex-shrink-0">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="inline-block px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold uppercase shadow-sm">
+                                Perlu Pemantauan
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-900 mb-3">Status Pertumbuhan</h3>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-yellow-300">
+                            <p class="text-gray-700 leading-relaxed mb-3">
+                                ⚠️ Berat badan bayi di atas rentang normal.
+                            </p>
+                            <div class="bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-600">
+                                <p class="text-sm text-gray-700">
+                                    <strong class="text-yellow-800">📊 Berat badan {{ $berat }} kg</strong> di
+                                    atas standar untuk usia {{ $usia }} bulan ({{ $bayi->jenis_kelamin }}).
+                                </p>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    💡 Rekomendasi MPASI disesuaikan untuk mencukupkan kebutuhan energi tanpa
+                                    berlebihan. Konsultasikan dengan dokter atau ahli gizi untuk panduan lebih lanjut.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- NOTIFIKASI DATA REFERENSI TIDAK TERSEDIA -->
+            <div
+                class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border-2 border-gray-300 relative">
+                <button @click="showNotif = false"
+                    class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 transition-colors duration-200 focus:outline-none group"
+                    aria-label="Tutup notifikasi">
+                    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <div class="flex items-start space-x-4 pr-8">
+                    <div class="bg-gray-500 rounded-full p-3 shadow-md flex-shrink-0">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span
+                                class="inline-block px-3 py-1 bg-gray-500 text-white rounded-full text-xs font-bold uppercase shadow-sm">
+                                Informasi
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Status Pertumbuhan</h3>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
+                            <p class="text-gray-700 leading-relaxed mb-3">
+                                ℹ️ Data referensi pertumbuhan tidak tersedia untuk validasi.
+                            </p>
+                            <div class="bg-gray-50 rounded-lg p-3 border-l-4 border-gray-400">
+                                <p class="text-sm text-gray-700">
+                                    <strong class="text-gray-700">📊 Berat badan {{ $berat }} kg</strong> untuk
+                                    usia {{ $usia }} bulan ({{ $bayi->jenis_kelamin }}).
+                                </p>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    💡 Rekomendasi MPASI tetap diberikan berdasarkan kebutuhan kalori. Konsultasikan
+                                    dengan dokter untuk memastikan pertumbuhan bayi optimal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div> <!-- Hasil Perhitungan -->
     <main class="max-w-4xl mx-auto bg-white mt-10 p-8 rounded-lg shadow-md space-y-6">
 
         <div>
@@ -306,11 +504,13 @@
                     @endforeach
                 </select>
             </div>
+
             <ul class="text-gray-700 space-y-1">
                 <li><strong>Nama:</strong> {{ $bayi->nama_bayi }}</li>
                 <li><strong>Tanggal Lahir:</strong> {{ \Carbon\Carbon::parse($bayi->tanggal_lahir)->format('d M Y') }}
                 </li>
                 <li><strong>Usia:</strong> {{ $usia }} bulan</li>
+                <li><strong>Jenis Kelamin:</strong> {{ $bayi->jenis_kelamin }}</li>
                 <li><strong>Berat Badan:</strong> {{ $berat }} kg</li>
                 <li><strong>Tinggi Badan:</strong> {{ $tinggi }} cm</li>
                 <li><strong>Jenis Susu:</strong> {{ $bayi->jenis_susu }}</li>
@@ -319,7 +519,7 @@
                 @if ($bayi->jenis_susu === 'ASI')
                     <li><strong>Volume ASI:</strong> {{ $volume_asi }} ml</li>
                 @elseif ($bayi->jenis_susu === 'Sufor')
-                    <li><strong>Kalori per Porsi:</strong> {{ $kalori_per_porsi}} kkal</li>
+                    <li><strong>Kalori per Porsi:</strong> {{ $kalori_per_porsi }} kkal</li>
                     <li><strong>Jumlah Porsi sufor per Hari:</strong> {{ $bayi->jumlah_porsi_per_hari ?? '-' }} kali
                     </li>
                 @elseif ($bayi->jenis_susu === 'Mix')
@@ -351,7 +551,7 @@
         <div>
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-yellow-800">
-                    🍽️ Pembagian Kalori Harian & Rekomendasi MPASI
+                    🍽️ Pembagian Kalori Minimum Harian & Rekomendasi MPASI
                 </h3>
                 <button onclick="refreshRekomendasi()"
                     class="text-sm bg-green-700 hover:bg-yellow-800 text-white semibold-300 px-3 py-1 rounded shadow">
@@ -359,16 +559,16 @@
                 </button>
             </div>
 
-        @foreach ([
-    'Pagi' => ['kalori' => $pagi, 'jam' => '08.00'],
-    'Siang' => ['kalori' => $siang, 'jam' => '12.00'],
-    'Malam' => ['kalori' => $malam, 'jam' => '18.00'],
-    'Snack' => ['kalori' => $snack, 'jam' => '16.00']
-] as $waktu => $data)
+            @foreach ([
+        'Pagi' => ['kalori' => $pagi, 'jam' => '08.00'],
+        'Siang' => ['kalori' => $siang, 'jam' => '12.00'],
+        'Malam' => ['kalori' => $malam, 'jam' => '18.00'],
+        'Snack' => ['kalori' => $snack, 'jam' => '16.00'],
+    ] as $waktu => $data)
                 <div class="mb-6">
-                  <h4 class="text-lg font-semibold text-yellow-900">
-            {{ $waktu }} ({{ $data['jam'] }}) – {{ $data['kalori'] }} kkal
-        </h4>
+                    <h4 class="text-lg font-semibold text-yellow-900">
+                        {{ $waktu }} ({{ $data['jam'] }}) – {{ $data['kalori'] }} kkal
+                    </h4>
 
                     <div class="grid md:grid-cols-2 gap-4 mt-2">
                         @foreach (${'resep' . $waktu} as $index => $mpasi)
@@ -376,8 +576,8 @@
                                 x-data="{ open: false }">
                                 <h4 class="font-semibold text-lg text-yellow-900 flex items-center space-x-2">
                                     @if (!empty($mpasi['gambar']))
-                                        <img  src="{{ asset($mpasi->gambar) }}"
-    alt="gambar menu {{ $mpasi->nama_menu }}"
+                                        <img src="{{ asset($mpasi->gambar) }}"
+                                            alt="gambar menu {{ $mpasi->nama_menu }}"
                                             class="w-10 h-10 object-cover rounded-md">
                                     @endif
                                     <span>{{ $mpasi['nama_menu'] }}</span>
@@ -387,107 +587,106 @@
                                     Lihat Detail
                                 </button>
 
-<!-- Modal Detail Resep -->
-<div x-show="open" x-transition
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl w-11/12 md:w-2/3 p-6 shadow-2xl relative transform transition-all duration-300 overflow-y-auto max-h-full"
-        x-show="open"
-        x-transition:enter="transition transform duration-300"
-        x-transition:enter-start="scale-75 opacity-0"
-        x-transition:enter-end="scale-100 opacity-100"
-        x-transition:leave="transition transform duration-200"
-        x-transition:leave-start="scale-100 opacity-100"
-        x-transition:leave-end="scale-75 opacity-0">
+                                <!-- Modal Detail Resep -->
+                                <div x-show="open" x-transition
+                                    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                                    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl w-11/12 md:w-2/3 p-6 shadow-2xl relative transform transition-all duration-300 overflow-y-auto max-h-full"
+                                        x-show="open" x-transition:enter="transition transform duration-300"
+                                        x-transition:enter-start="scale-75 opacity-0"
+                                        x-transition:enter-end="scale-100 opacity-100"
+                                        x-transition:leave="transition transform duration-200"
+                                        x-transition:leave-start="scale-100 opacity-100"
+                                        x-transition:leave-end="scale-75 opacity-0">
 
-        <!-- Gambar & Nama Menu -->
-        <div class="text-center mb-6">
-            @if (!empty($mpasi['gambar']))
-                <img src="{{ asset($mpasi->gambar) }}"
-                    alt="gambar menu {{ $mpasi->nama_menu }}"
-                    class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-xl shadow-md mx-auto">
-            @endif
+                                        <!-- Gambar & Nama Menu -->
+                                        <div class="text-center mb-6">
+                                            @if (!empty($mpasi['gambar']))
+                                                <img src="{{ asset($mpasi->gambar) }}"
+                                                    alt="gambar menu {{ $mpasi->nama_menu }}"
+                                                    class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-xl shadow-md mx-auto">
+                                            @endif
 
-            <h2 class="mt-4 text-3xl font-extrabold text-yellow-800">
-                {{ $mpasi['nama_menu'] }}
-            </h2>
-        </div>
+                                            <h2 class="mt-4 text-3xl font-extrabold text-yellow-800">
+                                                {{ $mpasi['nama_menu'] }}
+                                            </h2>
+                                        </div>
 
-        <!-- Informasi Gizi -->
-        <div class="mb-4 p-4 bg-yellow-100 rounded-xl">
-            <h3 class="text-right font-semibold text-blue-700 text-lg mb-2">
-                Untuk {{ $mpasi['porsi'] }} porsi
-            </h3>
+                                        <!-- Informasi Gizi -->
+                                        <div class="mb-4 p-4 bg-yellow-100 rounded-xl">
+                                            <h3 class="text-right font-semibold text-blue-700 text-lg mb-2">
+                                                Untuk {{ $mpasi['porsi'] }} porsi
+                                            </h3>
 
-            <h3 class="text-2xl font-bold text-green-600 mb-3">
-                📊 Informasi Gizi Per Porsi:
-            </h3>
+                                            <h3 class="text-2xl font-bold text-green-600 mb-3">
+                                                📊 Informasi Gizi Per Porsi:
+                                            </h3>
 
-            <div class="grid grid-cols-2 gap-3 text-lg text-gray-800">
-                <div>
-                    <span class="font-bold">Total Energi:</span>
-                    {{ empty($mpasi['energi']) ? '-' : $mpasi['energi'].' kkal' }}
-                </div>
+                                            <div class="grid grid-cols-2 gap-3 text-lg text-gray-800">
+                                                <div>
+                                                    <span class="font-bold">Total Energi:</span>
+                                                    {{ empty($mpasi['energi']) ? '-' : $mpasi['energi'] . ' kkal' }}
+                                                </div>
 
-                <div>
-                    <span class="font-bold">Karbohidrat:</span>
-                    {{ empty($mpasi['karbohidrat']) ? '-' : $mpasi['karbohidrat'].' gram' }}
-                </div>
+                                                <div>
+                                                    <span class="font-bold">Karbohidrat:</span>
+                                                    {{ empty($mpasi['karbohidrat']) ? '-' : $mpasi['karbohidrat'] . ' gram' }}
+                                                </div>
 
-                <div>
-                    <span class="font-bold">Protein:</span>
-                    {{ empty($mpasi['protein']) ? '-' : $mpasi['protein'].' gram' }}
-                </div>
+                                                <div>
+                                                    <span class="font-bold">Protein:</span>
+                                                    {{ empty($mpasi['protein']) ? '-' : $mpasi['protein'] . ' gram' }}
+                                                </div>
 
-                <div>
-                    <span class="font-bold">Lemak:</span>
-                    {{ empty($mpasi['lemak']) ? '-' : $mpasi['lemak'].' gram' }}
-                </div>
+                                                <div>
+                                                    <span class="font-bold">Lemak:</span>
+                                                    {{ empty($mpasi['lemak']) ? '-' : $mpasi['lemak'] . ' gram' }}
+                                                </div>
 
-                <div>
-                    <span class="font-bold">Zat Besi:</span>
-                    {{ empty($mpasi['zat_besi']) ? '-' : $mpasi['zat_besi'].' mg' }}
-                </div>
-            </div>
-        </div>
+                                                <div>
+                                                    <span class="font-bold">Zat Besi:</span>
+                                                    {{ empty($mpasi['zat_besi']) ? '-' : $mpasi['zat_besi'] . ' mg' }}
+                                                </div>
+                                            </div>
+                                        </div>
 
-        <!-- Bahan-bahan -->
-        <div class="mb-4">
-            <h3 class="text-2xl font-semibold text-pink-600 mb-3">
-                🧺 Bahan-bahan:
-            </h3>
+                                        <!-- Bahan-bahan -->
+                                        <div class="mb-4">
+                                            <h3 class="text-2xl font-semibold text-pink-600 mb-3">
+                                                🧺 Bahan-bahan:
+                                            </h3>
 
-            <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
-                @forelse ($mpasi->bahans as $bahan)
-                    <li>{{ $bahan->takaran }} {{ $bahan->bahan }}</li>
-                @empty
-                    <li>-</li>
-                @endforelse
-            </ul>
-        </div>
+                                            <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
+                                                @forelse ($mpasi->bahans as $bahan)
+                                                    <li>{{ $bahan->takaran }} {{ $bahan->bahan }}</li>
+                                                @empty
+                                                    <li>-</li>
+                                                @endforelse
+                                            </ul>
+                                        </div>
 
-        <!-- Langkah-langkah -->
-        <div>
-            <h3 class="text-2xl font-semibold text-blue-600 mb-3">
-                👣 Langkah-langkah:
-            </h3>
+                                        <!-- Langkah-langkah -->
+                                        <div>
+                                            <h3 class="text-2xl font-semibold text-blue-600 mb-3">
+                                                👣 Langkah-langkah:
+                                            </h3>
 
-            <ol class="list-decimal list-inside text-lg text-gray-800 space-y-3">
-                @forelse ($mpasi->langkahs as $langkah)
-                    <li>{{ $langkah->langkah }}</li>
-                @empty
-                    <li>-</li>
-                @endforelse
-            </ol>
-        </div>
+                                            <ol class="list-decimal list-inside text-lg text-gray-800 space-y-3">
+                                                @forelse ($mpasi->langkahs as $langkah)
+                                                    <li>{{ $langkah->langkah }}</li>
+                                                @empty
+                                                    <li>-</li>
+                                                @endforelse
+                                            </ol>
+                                        </div>
 
-        <!-- Tombol Tutup -->
-        <button @click="open = false"
-            class="absolute top-3 right-3 text-3xl text-red-400 hover:text-red-600 font-bold"
-            aria-label="Tutup">
-            &times;
-        </button>
-    </div>
-</div>
+                                        <!-- Tombol Tutup -->
+                                        <button @click="open = false"
+                                            class="absolute top-3 right-3 text-3xl text-red-400 hover:text-red-600 font-bold"
+                                            aria-label="Tutup">
+                                            &times;
+                                        </button>
+                                    </div>
+                                </div>
 
                             </div>
                         @endforeach
@@ -516,34 +715,46 @@
             <div>
                 <h3 class="text-xl font-bold text-gray-900 mb-6">Menu</h3>
                 <ul class="text-sm space-y-2">
-                       <li>
-                        <a href="{{ route('landingpg') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    <li>
+                        <a href="{{ route('landingpg') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Beranda</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('rekomendasi') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('rekomendasi') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Rekomendasi MPASI</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('perkembangan.index') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('perkembangan.index') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Perkembangan Bayi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('artikel') }}" class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
-                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        <a href="{{ route('artikel') }}"
+                            class="text-base text-gray-700 hover:text-orange-600 transition-colors flex items-center group">
+                            <svg class="w-4 h-4 mr-2 text-orange-500 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="group-hover:translate-x-1 transition-transform">Artikel MPASI</span>
                         </a>
@@ -555,9 +766,9 @@
         <!-- Garis dan Hak Cipta -->
         <div class="mt-8 text-center">
             <div class="mx-auto w-48 border-t-2 border-yellow-400"></div>
-             <p class="text-base text-gray-600">
-                    © 2025 GEMAS All rights reserved.
-                </p>
+            <p class="text-base text-gray-600">
+                © 2025 GEMAS All rights reserved.
+            </p>
         </div>
     </footer>
     <!-- end footer -->
@@ -636,15 +847,15 @@
 
                         <div class="mb-3">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Berat (kg)</label>
-                            <input type="number" step="0.1" min="2" max="15" x-ref="berat" x-model="formData.berat"
-                                min="0"
+                            <input type="number" step="0.1" min="2" max="15" x-ref="berat"
+                                x-model="formData.berat" min="0"
                                 class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:outline-none focus:ring-yellow-400">
                         </div>
 
                         <div class="mb-3">
                             <label class="block text-sm font-medium text-gray-700 mb-1">Tinggi (cm)</label>
-                            <input type="number" step="0.1" min="40" max="100" x-ref="tinggi" x-model="formData.tinggi"
-                                min="0"
+                            <input type="number" step="0.1" min="40" max="100" x-ref="tinggi"
+                                x-model="formData.tinggi" min="0"
                                 class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:outline-none focus:ring-yellow-400">
                         </div>
                         <!-- pilih jenis susu -->
@@ -701,7 +912,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         function modalData() {
             return {

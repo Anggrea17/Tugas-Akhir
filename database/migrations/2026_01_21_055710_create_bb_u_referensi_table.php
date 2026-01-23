@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_mpasi', function (Blueprint $table) {
+        Schema::create('bb_u_referensi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kategori');
-            $table->timestamps();
+            $table->enum('gender', ['L', 'P']);
+            $table->integer('usia_bulan');
+            $table->decimal('bb_min', 4, 1); // SD2neg
+            $table->decimal('bb_max', 4, 1); // SD2
         });
+        
     }
 
     /**
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_mpasi');
+        Schema::dropIfExists('bb_u_referensi');
     }
 };
