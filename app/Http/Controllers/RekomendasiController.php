@@ -27,9 +27,36 @@ class RekomendasiController extends Controller
         );
 
         if ($dataKurang) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'lengkap' => false,
+                    'bayi_id' => $bayi->id,
+                    'bayi' => [
+                        'nama_bayi' => $bayi->nama_bayi,
+                        'tanggal_lahir' => $bayi->tanggal_lahir,
+                        'jenis_kelamin' => $bayi->jenis_kelamin,
+                        'umur' => $bayi->umur ?? null,
+                        'berat' => $bayi->berat,
+                        'tinggi' => $bayi->tinggi,
+                        'volume_asi' => $bayi->volume_asi,
+                        'kalori_per_porsi' => $bayi->kalori_per_porsi,
+                        'jumlah_porsi_per_hari' => $bayi->jumlah_porsi_per_hari,
+                    ]
+                ]);
+            }
             return redirect()->route('landingpg')
                 ->with('selectedBayiId', $bayi->id)
                 ->withErrors(['bayi' => 'Lengkapi data bayi terlebih dahulu.']);
+        }
+
+        // ✅ Kalau data lengkap → kalau AJAX, kirim redirect
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'lengkap' => true,
+                'redirect' => route('rekomendasi', ['bayi_id' => $bayi->id])
+            ]);
         }
 
         // 🔹 Hitung usia
