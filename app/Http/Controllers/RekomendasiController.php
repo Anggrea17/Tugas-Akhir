@@ -116,7 +116,7 @@ class RekomendasiController extends Controller
         } elseif ($usia <= 11) {
             $minimal_mpasi_absolut = 300;
         } else {
-            $minimal_mpasi_absolut = 400;
+            $minimal_mpasi_absolut = 550;
         }
 
 
