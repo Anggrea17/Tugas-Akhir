@@ -154,7 +154,7 @@
         <!-- Konten Utama -->
         <div class="max-w-6xl mx-auto mt-8 px-4">
             <div class="flex flex-col md:flex-row justify-between items-center mb-4">
-                <h2 class="text-2xl font-semibold text-gray-700 md:mb-0 mb-4">Kelola Pengguna</h2>
+                <h2 class="text-2xl font-semibold text-gray-700 md:mb-0 mb-4">Kelola User</h2>
                 <div class="flex items-center space-x-2 w-full md:w-auto">
                     <!-- Form pencarian -->
                     <form method="GET" action="{{ route('admin.users') }}"
