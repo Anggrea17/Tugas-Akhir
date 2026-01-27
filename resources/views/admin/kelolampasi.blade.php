@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        [x-cloak] { 
-            display: none !important; 
+        [x-cloak] {
+            display: none !important;
         }
     </style>
 </head>
@@ -23,11 +23,7 @@
     openModal: false,
     deleteUrl: '',
     mpasiToDelete: null
-}" x-cloak x-init="
-    @if(session('showAddModal'))
-        $nextTick(() => { showAddModal = true })
-    @endif
-">
+}" x-cloak x-init="@if (session('showAddModal')) $nextTick(() => { showAddModal = true }) @endif">
     <!-- Sidebar -->
     <aside
         class="fixed z-30 inset-y-0 left-0 w-64 bg-white shadow-md h-screen transform md:translate-x-0 transition-transform duration-200 ease-in-out"
@@ -53,7 +49,7 @@
                     </svg>
                     Kelola User
                 </a>
-              <a href="{{ route('admin.mpasi') }}"
+                <a href="{{ route('admin.mpasi') }}"
                     class="flex items-center px-4 py-2 text-gray-700 bg-yellow-100 rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 mr-3 text-yellow-700">
@@ -90,7 +86,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M17.015 3.055a1 1 0 0 1 1.26 1.548l-.098.079l-2.101 1.501a1.96 1.96 0 0 0-.794 1.937l.032.152l3.343-3.343a1 1 0 0 1 1.497 1.32l-.083.094l-3.343 3.343c.705.18 1.485-.04 1.986-.63l.103-.132l1.501-2.101a1 1 0 0 1 1.694 1.055l-.067.107l-1.5 2.102a3.97 3.97 0 0 1-5.054 1.216l-.18-.1l-2.297 2.296l4.157 4.158a1 1 0 0 1 .083 1.32l-.083.094a1 1 0 0 1-1.32.083l-.094-.083l-4.157-4.158l-4.157 4.158a1 1 0 0 1-1.32.083l-.094-.083a1 1 0 0 1-.083-1.32l.083-.094l4.157-4.158l-1.61-1.61a4.5 4.5 0 0 1-1.355.473l-.25.037a3.89 3.89 0 0 1-3.279-1.15C2.663 10.319 2.132 9.15 2 8.027c-.13-1.105.12-2.289.93-3.098c.809-.81 1.992-1.06 3.097-.93c1.123.133 2.293.664 3.222 1.593a3.89 3.89 0 0 1 1.15 3.278c-.06.505-.207.984-.406 1.401l-.104.204l1.61 1.61l2.298-2.296a3.97 3.97 0 0 1 .944-5.103l.172-.13z" />
                     </svg>
-                    Kelola Kategori Mpasi
+                    Kelola Kategori MPASI
                 </a>
             </nav>
         </div>
@@ -135,7 +131,8 @@
                 <div x-show="open" @click.away="open = false"
                     class="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl text-gray-800 p-4 z-50">
                     <div class="flex items-center space-x-4">
-                        <img src="{{ asset('bahan/admin-icon.png') }}" alt="Admin" class="w-14 h-14 rounded-full">
+                        <img src="{{ asset('bahan/admin-icon.png') }}" alt="Admin"
+                            class="w-14 h-14 rounded-full">
                         <div>
                             <p class="font-semibold text-lg">{{ $admin->nama }}</p>
                             <p class="text-sm text-gray-500">{{ $admin->email }}</p>
@@ -246,10 +243,10 @@
             @endif
 
             @if ($errors->any())
-                <div x-data="{ show: true }" x-init="setTimeout(() => { 
-    show = false;                          // 1. Sembunyikan error setelah 5 detik
-    setTimeout(() => showAddModal = true, 300)  // 2. Buka modal lagi setelah 300ms (delay kecil untuk transisi smooth)
-}, 5000)" x-show="show" x-transition
+                <div x-data="{ show: true }" x-init="setTimeout(() => {
+                    show = false; // 1. Sembunyikan error setelah 5 detik
+                    setTimeout(() => showAddModal = true, 300) // 2. Buka modal lagi setelah 300ms (delay kecil untuk transisi smooth)
+                }, 5000)" x-show="show" x-transition
                     class="bg-red-100 text-red-700 px-4 py-2 rounded shadow-md">
                     <ul class="list-disc ml-4">
                         @foreach ($errors->all() as $error)
@@ -258,7 +255,6 @@
                     </ul>
                 </div>
             @endif
-
 
             <div class="overflow-x-auto">
                 <div x-data="{ open: false }" x-init="$el.classList.remove('hidden')" class="hidden">
@@ -291,7 +287,7 @@
                                             class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
                                             Edit
                                         </a>
-                                        <button 
+                                        <button
                                             @click="
                                                 showViewModal = true;
                                                 selectedMpasi = {
@@ -318,342 +314,355 @@
                 </div>
             </div>
 
-<!-- Modal Tambah Resep -->
-<div x-show="showAddModal" x-cloak class="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
+            <!-- Modal Tambah Resep -->
+            <div x-show="showAddModal" x-cloak
+                class="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
 
-    <div class="bg-white p-6 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto relative shadow-xl">
-        <!-- Tombol X -->
-        <button @click="showAddModal = false"
-            class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+                <div class="bg-white p-6 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto relative shadow-xl">
+                    <!-- Tombol X -->
+                    <button @click="showAddModal = false"
+                        class="absolute top-4 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
 
-        <h2 class="text-xl font-bold text-yellow-600 mb-4">Tambah Resep MPASI</h2>
+                    <h2 class="text-xl font-bold text-yellow-600 mb-4">Tambah Resep MPASI</h2>
 
-        <form action="{{ route('admin.mpasi.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
-            @csrf
+                    <form action="{{ route('admin.mpasi.store') }}" method="POST" enctype="multipart/form-data"
+                        class="space-y-4">
+                        @csrf
 
-            <!-- Nama Menu -->
-            <div>
-                <label class="block font-semibold">Nama Menu</label>
-                <input type="text" name="nama_menu" value="{{ old('nama_menu') }}"
-                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                @error('nama_menu')
-                    <p class="text-red-500 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Umur -->
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block font-medium">Umur Minimal (bulan)</label>
-                    <select name="min_umur"
-                        class="w-full border p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500 rounded">
-                        <option value="">Pilih Usia</option>
-                        @for ($i = 6; $i <= 12; $i++)
-                            <option value="{{ $i }}" {{ old('min_umur') == $i ? 'selected' : '' }}>
-                                {{ $i }} Bulan
-                            </option>
-                        @endfor
-                    </select>
-                </div>
-                <div>
-                    <label class="block font-medium">Umur Maksimal (bulan)</label>
-                    <select name="max_umur"
-                        class="w-full border p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500 rounded">
-                        <option value="">Pilih Usia</option>
-                        @for ($i = 6; $i <= 12; $i++)
-                            <option value="{{ $i }}" {{ old('max_umur') == $i ? 'selected' : '' }}>
-                                {{ $i }} Bulan
-                            </option>
-                        @endfor
-                    </select>
-                </div>
-            </div>
-
-            <!-- Kategori -->
-            <div>
-                <label class="block font-semibold">Kategori</label>
-                <select name="kategori_id"
-                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                    <option value="">-- Pilih Kategori --</option>
-                    @foreach ($categories as $kat)
-                        <option value="{{ $kat->id }}" {{ old('kategori_id') == $kat->id ? 'selected' : '' }}>
-                            {{ $kat->nama_kategori }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('kategori_id')
-                    <p class="text-red-500 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Bahan Dinamis -->
-            <div x-data="{
-                bahans: {{ json_encode(old('bahan', [''])) }},
-                takarans: {{ json_encode(old('takaran', [''])) }}
-            }" class="space-y-2">
-
-                <label class="block font-semibold">Bahan-bahan</label>
-
-                <template x-for="(item, index) in bahans" :key="index">
-                    <div class="flex gap-2 mb-2">
-                        <input type="text" :name="'bahan[' + index + ']'" x-model="bahans[index]"
-                            class="w-2/3 border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                            placeholder="Nama bahan">
-
-                        <input type="text" :name="'takaran[' + index + ']'" x-model="takarans[index]"
-                            class="w-1/3 border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                            placeholder="Takaran">
-
-                        <button type="button" @click="bahans.splice(index,1); takarans.splice(index,1)"
-                            class="px-2 text-red-500">✕</button>
-                    </div>
-                </template>
-
-                <button type="button" @click="bahans.push(''); takarans.push('')"
-                    class="px-3 py-1 bg-green-500 text-white rounded">+ Tambah Bahan</button>
-            </div>
-
-            <!-- Langkah Dinamis -->
-            <div x-data="{ steps: {{ json_encode(old('langkah', [''])) }} }" class="space-y-2">
-                <label class="block font-semibold">Langkah Pembuatan</label>
-
-                <template x-for="(step, index) in steps" :key="index">
-                    <div class="flex gap-2 mb-2">
-                        <textarea :name="'langkah[' + index + ']'" x-model="steps[index]"
-                            class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                            placeholder="Langkah..."></textarea>
-
-                        <button type="button" @click="steps.splice(index,1)" class="px-2 text-red-500">✕</button>
-                    </div>
-                </template>
-
-                <button type="button" @click="steps.push('')"
-                    class="px-3 py-1 bg-blue-500 text-white rounded">+ Tambah Langkah</button>
-            </div>
-
-            <!-- Porsi -->
-            <div x-data="{
-                porsi: '{{ old('porsi') <= 3 ? old('porsi', '1') : 'lainnya' }}',
-                customPorsi: '{{ old('porsi') > 3 ? old('porsi') : '' }}'
-            }" class="space-y-2">
-
-                <label class="block font-semibold mb-1">Porsi</label>
-
-                <select x-model="porsi"
-                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                    :name="porsi === 'lainnya' ? '' : 'porsi'">
-
-                    <option value="1">1 Porsi</option>
-                    <option value="2">2 Porsi</option>
-                    <option value="3">3 Porsi</option>
-                    <option value="lainnya">Lainnya</option>
-                </select>
-
-                <template x-if="porsi === 'lainnya'">
-                    <input type="number" name="porsi" x-model="customPorsi"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
-                        placeholder="Masukkan jumlah porsi">
-                </template>
-            </div>
-
-            <!-- Gizi -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div>
-                    <label class="block font-medium">Energi (kkal)</label>
-                    <input type="number" step="0.01" name="energi" value="{{ old('energi') }}"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                </div>
-                <div>
-                    <label class="block font-medium">Karbohidrat (g)</label>
-                    <input type="number" step="0.01" name="karbohidrat" value="{{ old('karbohidrat') }}"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                </div>
-                <div>
-                    <label class="block font-medium">Protein (g)</label>
-                    <input type="number" step="0.01" name="protein" value="{{ old('protein') }}"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                </div>
-                <div>
-                    <label class="block font-medium">Lemak (g)</label>
-                    <input type="number" step="0.01" name="lemak" value="{{ old('lemak') }}"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                </div>
-                <div>
-                    <label class="block font-medium">Zat Besi (mg)</label>
-                    <input type="number" step="0.01" name="zat_besi" value="{{ old('zat_besi') }}"
-                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
-                </div>
-            </div>
-
-            <!-- Upload Gambar -->
-            <div>
-                <label class="block font-semibold mb-2 text-gray-700">Gambar Menu</label>
-
-                <input 
-                    type="file" 
-                    name="gambar" 
-                    id="gambar"
-                    accept="image/*"
-                    class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm 
-                           focus:ring focus:ring-yellow-200 focus:border-yellow-400 p-2"
-                >
-
-                <!-- Error realtime -->
-                <p id="errorGambar" class="text-red-500 text-sm mt-1 hidden"></p>
-
-                <!-- Preview -->
-                <img 
-                    id="previewGambar"
-                    class="hidden w-32 h-32 mt-3 rounded-lg border object-cover"
-                >
-
-                @error('gambar')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <!-- Tombol -->
-            <div class="flex justify-end gap-2 mt-4">
-                <button type="button" @click="showAddModal = false"
-                    class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Batal</button>
-                <button type="submit"
-                    class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Simpan</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- MODAL PREVIEW MPASI -->
-<div x-show="showViewModal" x-cloak
-    class="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
-    @click.self="showViewModal = false"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 scale-90"
-    x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 scale-100"
-    x-transition:leave-end="opacity-0 scale-90">
-
-    <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl">
-        <!-- Tombol Close -->
-        <button @click="showViewModal = false"
-            class="absolute top-4 right-4 z-10 text-gray-500 hover:text-red-600 text-2xl font-bold">
-            &times;
-        </button>
-
-        <div class="overflow-y-auto max-h-[90vh]">
-            <!-- Header dengan Gambar -->
-            <div class="relative p-8">
-                <template x-if="selectedMpasi?.gambar">
-                    <div class="flex justify-center mb-4">
-                        <img
-                            :src="'/' + selectedMpasi.gambar"
-                            alt="gambar mpasi"
-                            class="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-white"
-                        >
-                    </div>
-                </template>
-                <h2 class="text-3xl font-bold text-gray-800 text-center"
-                    x-text="selectedMpasi?.nama_menu"></h2>
-            </div>
-
-            <!-- Content -->
-            <div class="p-8 space-y-6">
-                <!-- Info Cards Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-200">
-                        <p class="text-xs text-blue-600 font-semibold mb-1">Porsi</p>
-                        <p class="text-lg font-bold text-blue-900" x-text="selectedMpasi?.porsi"></p>
-                    </div>
-                    <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-200">
-                        <p class="text-xs text-purple-600 font-semibold mb-1">Kategori</p>
-                        <p class="text-lg font-bold text-purple-900" x-text="selectedMpasi?.kategori?.nama_kategori"></p>
-                    </div>
-                    <div class="bg-green-50 p-4 rounded-xl text-center border border-green-200">
-                        <p class="text-xs text-green-600 font-semibold mb-1">Usia Min</p>
-                        <p class="text-lg font-bold text-green-900"><span x-text="selectedMpasi?.min_umur"></span> bln</p>
-                    </div>
-                    <div class="bg-pink-50 p-4 rounded-xl text-center border border-pink-200">
-                        <p class="text-xs text-pink-600 font-semibold mb-1">Usia Max</p>
-                        <p class="text-lg font-bold text-pink-900"><span x-text="selectedMpasi?.max_umur"></span> bln</p>
-                    </div>
-                </div>
-
-                <!-- Kandungan Gizi -->
-                <div class="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-xl border border-orange-200">
-                    <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                        </svg>
-                        Kandungan Gizi per Porsi
-                    </h3>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-orange-600" x-text="selectedMpasi?.energi > 0 ? selectedMpasi?.energi : '-'"></p>
-                            <p class="text-xs text-gray-600">Energi (kkal)</p>
+                        <!-- Nama Menu -->
+                        <div>
+                            <label class="block font-semibold">Nama Menu</label>
+                            <input type="text" name="nama_menu" value="{{ old('nama_menu') }}"
+                                class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            @error('nama_menu')
+                                <p class="text-red-500 text-sm">{{ $message }}</p>
+                            @enderror
                         </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-orange-600" x-text="selectedMpasi?.karbohidrat > 0 ? selectedMpasi?.karbohidrat : '-'"></p>
-                            <p class="text-xs text-gray-600">Karbohidrat (g)</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-orange-600" x-text="selectedMpasi?.protein > 0 ? selectedMpasi?.protein : '-'"></p>
-                            <p class="text-xs text-gray-600">Protein (g)</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-orange-600" x-text="selectedMpasi?.lemak > 0 ? selectedMpasi?.lemak : '-'"></p>
-                            <p class="text-xs text-gray-600">Lemak (g)</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-orange-600" x-text="selectedMpasi?.zat_besi > 0 ? selectedMpasi?.zat_besi : '-'"></p>
-                            <p class="text-xs text-gray-600">Zat Besi (mg)</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Bahan & Langkah -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Bahan -->
-                    <div class="bg-white border-2 border-yellow-300 rounded-xl p-6 shadow-lg">
-                        <h3 class="text-lg font-bold text-yellow-800 mb-4 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
-                            </svg>
-                            Bahan-Bahan
-                        </h3>
-                        <ul class="space-y-2">
-                            <template x-for="(b, i) in selectedMpasi?.bahans" :key="i">
-                                <li class="flex items-start">
-                                    <span class="inline-block w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                    <span class="text-gray-700" x-text="(b.takaran ? b.takaran + ' ' : '') + b.bahan"></span>
-                                </li>
+                        <!-- Umur -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-medium">Umur Minimal (bulan)</label>
+                                <select name="min_umur"
+                                    class="w-full border p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500 rounded">
+                                    <option value="">Pilih Usia</option>
+                                    @for ($i = 6; $i <= 12; $i++)
+                                        <option value="{{ $i }}"
+                                            {{ old('min_umur') == $i ? 'selected' : '' }}>
+                                            {{ $i }} Bulan
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-medium">Umur Maksimal (bulan)</label>
+                                <select name="max_umur"
+                                    class="w-full border p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500 rounded">
+                                    <option value="">Pilih Usia</option>
+                                    @for ($i = 6; $i <= 12; $i++)
+                                        <option value="{{ $i }}"
+                                            {{ old('max_umur') == $i ? 'selected' : '' }}>
+                                            {{ $i }} Bulan
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Kategori -->
+                        <div>
+                            <label class="block font-semibold">Kategori</label>
+                            <select name="kategori_id"
+                                class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach ($categories as $kat)
+                                    <option value="{{ $kat->id }}"
+                                        {{ old('kategori_id') == $kat->id ? 'selected' : '' }}>
+                                        {{ $kat->nama_kategori }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('kategori_id')
+                                <p class="text-red-500 text-sm">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Bahan Dinamis -->
+                        <div x-data="{
+                            bahans: {{ json_encode(old('bahan', [''])) }},
+                            takarans: {{ json_encode(old('takaran', [''])) }}
+                        }" class="space-y-2">
+
+                            <label class="block font-semibold">Bahan-bahan</label>
+
+                            <template x-for="(item, index) in bahans" :key="index">
+                                <div class="flex gap-2 mb-2">
+                                    <input type="text" :name="'bahan[' + index + ']'" x-model="bahans[index]"
+                                        class="w-2/3 border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
+                                        placeholder="Nama bahan">
+
+                                    <input type="text" :name="'takaran[' + index + ']'" x-model="takarans[index]"
+                                        class="w-1/3 border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
+                                        placeholder="Takaran">
+
+                                    <button type="button" @click="bahans.splice(index,1); takarans.splice(index,1)"
+                                        class="px-2 text-red-500">✕</button>
+                                </div>
                             </template>
-                        </ul>
-                    </div>
 
-                    <!-- Langkah -->
-                    <div class="bg-white border-2 border-green-300 rounded-xl p-6 shadow-lg">
-                        <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                            </svg>
-                            Cara Membuat
-                        </h3>
-                        <ol class="space-y-3">
-                            <template x-for="(l, i) in selectedMpasi?.langkahs" :key="i">
-                                <li class="flex items-start">
-                                    <span class="inline-flex items-center justify-center w-6 h-6 bg-green-500 text-white text-xs font-bold rounded-full mr-3 flex-shrink-0 mt-0.5" x-text="i + 1"></span>
-                                    <span class="text-gray-700" x-text="l.langkah"></span>
-                                </li>
+                            <button type="button" @click="bahans.push(''); takarans.push('')"
+                                class="px-3 py-1 bg-green-500 text-white rounded">+ Tambah Bahan</button>
+                        </div>
+
+                        <!-- Langkah Dinamis -->
+                        <div x-data="{ steps: {{ json_encode(old('langkah', [''])) }} }" class="space-y-2">
+                            <label class="block font-semibold">Langkah Pembuatan</label>
+
+                            <template x-for="(step, index) in steps" :key="index">
+                                <div class="flex gap-2 mb-2">
+                                    <textarea :name="'langkah[' + index + ']'" x-model="steps[index]"
+                                        class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
+                                        placeholder="Langkah..."></textarea>
+
+                                    <button type="button" @click="steps.splice(index,1)"
+                                        class="px-2 text-red-500">✕</button>
+                                </div>
                             </template>
-                        </ol>
+
+                            <button type="button" @click="steps.push('')"
+                                class="px-3 py-1 bg-blue-500 text-white rounded">+ Tambah Langkah</button>
+                        </div>
+
+                        <!-- Porsi -->
+                        <div x-data="{
+                            porsi: '{{ old('porsi') <= 3 ? old('porsi', '1') : 'lainnya' }}',
+                            customPorsi: '{{ old('porsi') > 3 ? old('porsi') : '' }}'
+                        }" class="space-y-2">
+
+                            <label class="block font-semibold mb-1">Porsi</label>
+
+                            <select x-model="porsi"
+                                class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
+                                :name="porsi === 'lainnya' ? '' : 'porsi'">
+
+                                <option value="1">1 Porsi</option>
+                                <option value="2">2 Porsi</option>
+                                <option value="3">3 Porsi</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+
+                            <template x-if="porsi === 'lainnya'">
+                                <input type="number" name="porsi" x-model="customPorsi"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500"
+                                    placeholder="Masukkan jumlah porsi">
+                            </template>
+                        </div>
+
+                        <!-- Gizi -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block font-medium">Energi (kkal)</label>
+                                <input type="number" step="0.01" name="energi" value="{{ old('energi') }}"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block font-medium">Karbohidrat (g)</label>
+                                <input type="number" step="0.01" name="karbohidrat"
+                                    value="{{ old('karbohidrat') }}"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block font-medium">Protein (g)</label>
+                                <input type="number" step="0.01" name="protein" value="{{ old('protein') }}"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block font-medium">Lemak (g)</label>
+                                <input type="number" step="0.01" name="lemak" value="{{ old('lemak') }}"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            </div>
+                            <div>
+                                <label class="block font-medium">Zat Besi (mg)</label>
+                                <input type="number" step="0.01" name="zat_besi" value="{{ old('zat_besi') }}"
+                                    class="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500">
+                            </div>
+                        </div>
+
+                        <!-- Upload Gambar -->
+                        <div>
+                            <label class="block font-semibold mb-2 text-gray-700">Gambar Menu</label>
+
+                            <input type="file" name="gambar" id="gambar" accept="image/*"
+                                class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm 
+                           focus:ring focus:ring-yellow-200 focus:border-yellow-400 p-2">
+
+                            <!-- Error realtime -->
+                            <p id="errorGambar" class="text-red-500 text-sm mt-1 hidden"></p>
+
+                            <!-- Preview -->
+                            <img id="previewGambar" class="hidden w-32 h-32 mt-3 rounded-lg border object-cover">
+
+                            @error('gambar')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <!-- Tombol -->
+                        <div class="flex justify-end gap-2 mt-4">
+                            <button type="button" @click="showAddModal = false"
+                                class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Batal</button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MODAL PREVIEW MPASI -->
+            <div x-show="showViewModal" x-cloak
+                class="fixed inset-0 flex items-center justify-center bg-black/60 z-50"
+                @click.self="showViewModal = false" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90">
+
+                <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative shadow-2xl">
+                    <!-- Tombol Close -->
+                    <button @click="showViewModal = false"
+                        class="absolute top-4 right-4 z-10 text-gray-500 hover:text-red-600 text-2xl font-bold">
+                        &times;
+                    </button>
+
+                    <div class="overflow-y-auto max-h-[90vh]">
+                        <!-- Header dengan Gambar -->
+                        <div class="relative p-8">
+                            <template x-if="selectedMpasi?.gambar">
+                                <div class="flex justify-center mb-4">
+                                    <img :src="'/' + selectedMpasi.gambar" alt="gambar mpasi"
+                                        class="w-64 h-64 object-cover rounded-2xl shadow-2xl border-4 border-white">
+                                </div>
+                            </template>
+                            <h2 class="text-3xl font-bold text-gray-800 text-center"
+                                x-text="selectedMpasi?.nama_menu"></h2>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-8 space-y-6">
+                            <!-- Info Cards Grid -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-blue-50 p-4 rounded-xl text-center border border-blue-200">
+                                    <p class="text-xs text-blue-600 font-semibold mb-1">Porsi</p>
+                                    <p class="text-lg font-bold text-blue-900" x-text="selectedMpasi?.porsi"></p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-xl text-center border border-purple-200">
+                                    <p class="text-xs text-purple-600 font-semibold mb-1">Kategori</p>
+                                    <p class="text-lg font-bold text-purple-900"
+                                        x-text="selectedMpasi?.kategori?.nama_kategori"></p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-xl text-center border border-green-200">
+                                    <p class="text-xs text-green-600 font-semibold mb-1">Usia Min</p>
+                                    <p class="text-lg font-bold text-green-900"><span
+                                            x-text="selectedMpasi?.min_umur"></span> bln</p>
+                                </div>
+                                <div class="bg-pink-50 p-4 rounded-xl text-center border border-pink-200">
+                                    <p class="text-xs text-pink-600 font-semibold mb-1">Usia Max</p>
+                                    <p class="text-lg font-bold text-pink-900"><span
+                                            x-text="selectedMpasi?.max_umur"></span> bln</p>
+                                </div>
+                            </div>
+
+                            <!-- Kandungan Gizi -->
+                            <div
+                                class="bg-gradient-to-r from-orange-50 to-yellow-50 p-6 rounded-xl border border-orange-200">
+                                <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                                        <path fill-rule="evenodd"
+                                            d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Kandungan Gizi per Porsi
+                                </h3>
+                                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-orange-600"
+                                            x-text="selectedMpasi?.energi > 0 ? selectedMpasi?.energi : '-'"></p>
+                                        <p class="text-xs text-gray-600">Energi (kkal)</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-orange-600"
+                                            x-text="selectedMpasi?.karbohidrat > 0 ? selectedMpasi?.karbohidrat : '-'">
+                                        </p>
+                                        <p class="text-xs text-gray-600">Karbohidrat (g)</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-orange-600"
+                                            x-text="selectedMpasi?.protein > 0 ? selectedMpasi?.protein : '-'"></p>
+                                        <p class="text-xs text-gray-600">Protein (g)</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-orange-600"
+                                            x-text="selectedMpasi?.lemak > 0 ? selectedMpasi?.lemak : '-'"></p>
+                                        <p class="text-xs text-gray-600">Lemak (g)</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-bold text-orange-600"
+                                            x-text="selectedMpasi?.zat_besi > 0 ? selectedMpasi?.zat_besi : '-'"></p>
+                                        <p class="text-xs text-gray-600">Zat Besi (mg)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bahan & Langkah -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Bahan -->
+                                <div class="bg-white border-2 border-yellow-300 rounded-xl p-6 shadow-lg">
+                                    <h3 class="text-lg font-bold text-yellow-800 mb-4 flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                            </path>
+                                        </svg>
+                                        Bahan-Bahan
+                                    </h3>
+                                    <ul class="space-y-2">
+                                        <template x-for="(b, i) in selectedMpasi?.bahans" :key="i">
+                                            <li class="flex items-start">
+                                                <span
+                                                    class="inline-block w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                                <span class="text-gray-700"
+                                                    x-text="(b.takaran ? b.takaran + ' ' : '') + b.bahan"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+
+                                <!-- Langkah -->
+                                <div class="bg-white border-2 border-green-300 rounded-xl p-6 shadow-lg">
+                                    <h3 class="text-lg font-bold text-green-800 mb-4 flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        Cara Membuat
+                                    </h3>
+                                    <ol class="space-y-3">
+                                        <template x-for="(l, i) in selectedMpasi?.langkahs" :key="i">
+                                            <li class="flex items-start">
+                                                <span
+                                                    class="inline-flex items-center justify-center w-6 h-6 bg-green-500 text-white text-xs font-bold rounded-full mr-3 flex-shrink-0 mt-0.5"
+                                                    x-text="i + 1"></span>
+                                                <span class="text-gray-700" x-text="l.langkah"></span>
+                                            </li>
+                                        </template>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
             <!-- MODAL DELETE MPASI -->
             <div x-show="openModal" x-cloak x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -693,8 +702,9 @@
                                     </h3>
                                     <div class="mt-2">
                                         <p class="text-sm text-gray-500">
-                                            Apakah Anda yakin ingin menghapus resep 
-                                            <span class="font-medium text-gray-700" x-text="mpasiToDelete?.nama_menu"></span>? 
+                                            Apakah Anda yakin ingin menghapus resep
+                                            <span class="font-medium text-gray-700"
+                                                x-text="mpasiToDelete?.nama_menu"></span>?
                                         </p>
                                     </div>
                                 </div>
@@ -723,49 +733,49 @@
     </div>
 </body>
 <script>
-document.getElementById('gambar').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById('previewGambar');
-    const error = document.getElementById('errorGambar');
+    document.getElementById('gambar').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('previewGambar');
+        const error = document.getElementById('errorGambar');
 
-    // reset
-    error.classList.add('hidden');
-    error.textContent = '';
-    preview.classList.add('hidden');
-    preview.src = '';
+        // reset
+        error.classList.add('hidden');
+        error.textContent = '';
+        preview.classList.add('hidden');
+        preview.src = '';
 
-    if (!file) return;
+        if (!file) return;
 
-    const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+        const sizeMB = (file.size / 1024 / 1024).toFixed(2);
 
-    // ❌ bukan gambar
-    if (!file.type.startsWith('image/')) {
-        error.textContent = 'File yang dipilih harus berupa gambar.';
-        error.classList.remove('hidden');
+        // ❌ bukan gambar
+        if (!file.type.startsWith('image/')) {
+            error.textContent = 'File yang dipilih harus berupa gambar.';
+            error.classList.remove('hidden');
 
-        event.target.value = '';
-        setTimeout(() => error.classList.add('hidden'), 4000);
-        return;
-    }
+            event.target.value = '';
+            setTimeout(() => error.classList.add('hidden'), 4000);
+            return;
+        }
 
-    // ❌ lebih dari 2 MB
-    if (file.size > 2 * 1024 * 1024) {
-        error.textContent = `Ukuran gambar ${sizeMB} MB, maksimal 2 MB`;
-        error.classList.remove('hidden');
+        // ❌ lebih dari 2 MB
+        if (file.size > 2 * 1024 * 1024) {
+            error.textContent = `Ukuran gambar ${sizeMB} MB, maksimal 2 MB`;
+            error.classList.remove('hidden');
 
-        event.target.value = '';
-        setTimeout(() => error.classList.add('hidden'), 4000);
-        return;
-    }
+            event.target.value = '';
+            setTimeout(() => error.classList.add('hidden'), 4000);
+            return;
+        }
 
-    // ✅ valid → preview
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        preview.src = e.target.result;
-        preview.classList.remove('hidden');
-    };
-    reader.readAsDataURL(file);
-});
+        // ✅ valid → preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    });
 </script>
 
 </html>
